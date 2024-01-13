@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   phonebook.cpp                                      :+:    :+:            */
+/*   PhoneBook.hpp                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
+/*   By: djoyke <djoyke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/13 23:04:21 by djoyke        ########   odam.nl         */
+/*   Created: 2024/01/13 23:01:58 by djoyke        #+#    #+#                 */
+/*   Updated: 2024/01/13 23:03:34 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
-class PhoneBook //Class
-{       
-  	public:           // Access specifier
-    int myNum;        // Attribute (int variable)
-    string myString;  // Attribute (string variable)
-};
+#include <iostream>
+#include <cctype>
+
+#endif
