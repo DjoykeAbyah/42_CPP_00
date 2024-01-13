@@ -6,7 +6,7 @@
 #    By: djoyke <djoyke@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/01/13 22:49:01 by djoyke        #+#    #+#                  #
-#    Updated: 2024/01/13 23:00:28 by djoyke        ########   odam.nl          #
+#    Updated: 2024/01/13 23:18:43 by djoyke        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ CPPFLAGS	= -Wall -Wextra -Werror
 
 #sources
 SRC 		= 	PhoneBook.cpp	\
+				Contact.cpp		\
 				main.cpp		\
 
 #object files

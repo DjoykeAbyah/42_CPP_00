@@ -1,18 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   phonebook.cpp                                      :+:    :+:            */
+/*   Contact.cpp                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
+/*   By: djoyke <djoyke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/13 23:12:10 by djoyke        ########   odam.nl         */
+/*   Created: 2024/01/13 23:13:19 by djoyke        #+#    #+#                 */
+/*   Updated: 2024/01/13 23:14:46 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-class PhoneBook //Class
-{
-    array contacts = new array[8];
-}
