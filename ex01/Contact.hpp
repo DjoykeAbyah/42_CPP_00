@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   PhoneBook.hpp                                      :+:    :+:            */
+/*   Contact.hpp                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: djoyke <djoyke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/01/13 23:01:58 by djoyke        #+#    #+#                 */
-/*   Updated: 2024/01/17 21:55:22 by dreijans      ########   odam.nl         */
+/*   Created: 2024/01/13 23:13:19 by djoyke        #+#    #+#                 */
+/*   Updated: 2024/01/17 21:55:15 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
-#include <iostream>
-#include <cctype>
-#include <string>
-#include "Contact.hpp"
+# include <string>
 
 //class
-class PhoneBook
+class Contact
 {
 	private:
-		Contact contact[8];
+		std::string firstName;
+		std::string lastName;
+		std::string nickName;
+		std::string phoneNumber;
+		std::string darkestSecret;
 
 	public:
 		//constructors
-		PhoneBook();	
+		Contact();	
 		//deconstructor
-		~PhoneBook();
+		~Contact();
+		
+		void setFirstName();
+		std::string getFirstName();
+		void setLastName();
+		std::string getLastName();
 };
 
 #endif
