@@ -6,12 +6,12 @@
 #    By: djoyke <djoyke@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/01/13 22:49:01 by djoyke        #+#    #+#                  #
-#    Updated: 2024/01/13 23:18:43 by djoyke        ########   odam.nl          #
+#    Updated: 2024/01/17 16:29:08 by dreijans      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 #executable
-NAME 		= megaphone
+NAME 		= PhoneBook
 
 #compiler + flags
 CC			= c++

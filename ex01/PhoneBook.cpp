@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/17 14:04:07 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/17 16:28:46 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,4 @@ class PhoneBook //Class
     //array of contacts max 8
     //if user tries to add 9th,
     //it will replace the first
-}
+};
