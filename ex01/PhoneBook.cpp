@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   phonebook.cpp                                      :+:    :+:            */
+/*   PhoneBook.cpp                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/13 23:12:10 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/17 14:04:07 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 class PhoneBook //Class
 {
-    array contacts = new array[8];
+    //array of contacts max 8
+    //if user tries to add 9th,
+    //it will replace the first
 }
