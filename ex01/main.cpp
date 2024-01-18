@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/18 14:50:45 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/18 14:52:52 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int main()
               << "Darkest Secret: " << contact.getDarkestSecret() << "\n";
 	return (0);
 }
-//std::string name;
 //use std::getline(std::cin >> std std::ws, name); //use this for darkest secret
 //std::ws manipulator ignores leading whitespaces
 //name.lenght() because lenght is a member function
