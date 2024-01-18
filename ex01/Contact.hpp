@@ -6,7 +6,7 @@
 /*   By: djoyke <djoyke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/13 23:13:19 by djoyke        #+#    #+#                 */
-/*   Updated: 2024/01/17 22:00:07 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/18 14:29:27 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define CONTACT_HPP
 
 # include <string>
+#include <iostream>
+#include <cctype>
+#include <string>
 
 //class
 class Contact
