@@ -6,7 +6,7 @@
 /*   By: djoyke <djoyke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/13 23:01:58 by djoyke        #+#    #+#                 */
-/*   Updated: 2024/01/18 15:00:51 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/18 15:31:18 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class PhoneBook
 {
 	private:
 		Contact contacts[8];
+		int contactIndex;
 
 	public:
 		PhoneBook();//constructor
@@ -34,6 +35,7 @@ class PhoneBook
 	void searchContact();
 	void addContact();
 	void deleteContact();
+	void printPhoneBook();
 };
 
 #endif
