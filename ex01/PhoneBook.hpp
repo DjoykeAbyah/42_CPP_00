@@ -6,7 +6,7 @@
 /*   By: djoyke <djoyke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/13 23:01:58 by djoyke        #+#    #+#                 */
-/*   Updated: 2024/01/18 16:59:41 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/18 22:09:21 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,14 @@
 #include <iostream>
 #include <cctype>
 #include <string>
+#include <iomanip> 
 #include "Contact.hpp"
 
-//class
+/**
+ * PhoneBook class represents a simple phone book with a limited number of contacts.
+ * @param contacts: Private array to store Contact objects, with a fixed size of 8.
+ * @param contactIndex: Private variable to track the current index in the contacts array.
+ */
 class PhoneBook
 {
 	private:
@@ -26,17 +31,23 @@ class PhoneBook
 		int contactIndex;
 
 	public:
-		PhoneBook();//constructor
-		~PhoneBook();//deconstructor
-	
-	void setPhoneBook();
-	void getPhoneBook();//need this?
+		/**
+		 * Constructor for the PhoneBook class.
+		 */
+		PhoneBook();
+		
+		/**
+		 * Destructor for the PhoneBook class.
+		 */
+		~PhoneBook();
 
 	void searchContact();
 	void addContact();
 	int getContactIndex() const;//why const here?
 	void deleteContact();
-	void printPhoneBook(int page);
+	void printContact(int page);
+	void printPhoneBook();
+	void displayContacts();
 };
 
 #endif

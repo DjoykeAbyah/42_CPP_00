@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/18 20:36:44 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/18 22:15:22 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 #include <cstring>
 
 /**
- * @brief displays prompt at start of program
+ * displays prompt at start of program
  */
 void prompt()
 {
 	std::cout << "Welcome to my Phonebook let's go 80's!!\n";
-	std::cout << "to use this phonebook choose between the following options";
+	std::cout << "to use this phonebook choose between the following options:\n";
 	std::cout << "enter ADD, SEARCH or EXIT" << '\n';
 }
 
@@ -34,7 +34,10 @@ void prompt()
  * 6. make sure contact cant have empty fields
  * 7. make sure phonebook is empty at start
  * 8. give correct messages at exit etc
+ * 9. delete unnecessary comments above functions, look for best practice in commenting methods
+ * 10. make sure ADD SEARCH DELETE are in capital letters, throw error message if not
  * 
+ * @note 
  * lenght returns an unsigned integral value 
  * so if you want to assign to int you should static_cast<int>
  * name.lenght() because lenght is a member function
@@ -63,6 +66,7 @@ int main()
 		}
 		else if (input == "EXIT")
 		{
+			//delete contacts
 			exit(0);
 		}
 		else
