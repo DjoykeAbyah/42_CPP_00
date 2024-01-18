@@ -6,14 +6,20 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/18 17:02:53 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/18 20:37:36 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
+/**
+ * @brief constructor also sets contactIndex at 0;
+ */
 PhoneBook::PhoneBook():contactIndex(0){};
 
+/**
+ * 
+ */
 PhoneBook::~PhoneBook(){};
 
 void PhoneBook::searchContact()
@@ -38,6 +44,8 @@ void PhoneBook::addContact()
 {
     //if user tries to add 9th,
     //it will replace the first
+    if (contactIndex == 7)
+        contactIndex = 0;
     contacts[contactIndex].setFirstName();
     contacts[contactIndex].setLastName();
     contacts[contactIndex].setNickName();

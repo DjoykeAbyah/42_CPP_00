@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/18 17:03:38 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/18 20:36:44 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include "Contact.hpp"
 #include <cstring>
 
+/**
+ * @brief displays prompt at start of program
+ */
 void prompt()
 {
 	std::cout << "Welcome to my Phonebook let's go 80's!!\n";
@@ -21,20 +24,29 @@ void prompt()
 	std::cout << "enter ADD, SEARCH or EXIT" << '\n';
 }
 
+/**
+ * @todo 
+ * 1. what to do when phonebook is empty and someoe types SEARCH
+ * 2. display phonebook
+ * 3. input check for contact elememts
+ * 4. incorrect phonebook commands (other than ADD, SEARCH, EXIT, DELETE)
+ * 5. Delete method
+ * 6. make sure contact cant have empty fields
+ * 7. make sure phonebook is empty at start
+ * 8. give correct messages at exit etc
+ * 
+ * lenght returns an unsigned integral value 
+ * so if you want to assign to int you should static_cast<int>
+ * name.lenght() because lenght is a member function
+ */
 int main()
 {
 	PhoneBook phoneBook;
-	//phonebook is empty
-	//prompt user to enter 3 commands
-	//ADD, SEARCH, EXIT
-	//ADD save a new contact
-	//saved contact cant have empty fields
 	std::string input;
 	prompt();
 
 	while (1)
 	{
-		//loop doesnt stop fix that
 		std::cout << "enter ADD, SEARCH or EXIT" << '\n';
 		std::cin >> input;
 		std::cout << "you chose " << input << '\n';
@@ -58,7 +70,3 @@ int main()
 	}
 	return 0;
 }
-//use std::getline(std::cin >> std std::ws, name); //use this for darkest secret
-//std::ws manipulator ignores leading whitespaces
-//name.lenght() because lenght is a member function
-//lenght returns an unsigned integral value so if you want to assign to int you should static_cast<int>
