@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/19 20:02:20 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/19 20:03:57 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,7 @@ PhoneBook::PhoneBook():contactIndex(0){};
 PhoneBook::~PhoneBook(){};
 
 /**
- * @todo 
- * ◦ Each column must be 10 characters wide. A pipe character (’|’) separates
- * them. The text must be right-aligned. If the text is longer than the column,
- * it must be truncated and the last displayable character must be replaced by a
- * dot (’.’).
+ * Searches contacts based on entry index
  */ 
 void PhoneBook::searchContact()
 {
@@ -30,14 +26,9 @@ void PhoneBook::searchContact()
     displayContacts();
     std::cout << "\nWhich page do you want to see?\nplease give a number 1 - 8\n\n";
     std::cin >> pageNum;
-    if (pageNum.size() == 1)
-    {
-        int number = std::stoi(pageNum);
-        if (number > 0 && number < 9)
-            printContact(number);
-        else
-            std::cout << "\nPlease enter a numeric character from 1 till 8\n\n";
-    }
+    int number = std::stoi(pageNum);
+    if (number > 0 && number < 9)
+        printContact(number);
     else
         std::cout << "\nPlease enter a numeric character from 1 till 8\n\n";
 }
