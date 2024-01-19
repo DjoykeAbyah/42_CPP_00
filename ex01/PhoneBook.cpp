@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/19 20:03:57 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/19 21:25:10 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,54 @@ PhoneBook::PhoneBook():contactIndex(0){};
 PhoneBook::~PhoneBook(){};
 
 /**
- * Searches contacts based on entry index
+ * checks if input is numeric
+*/
+bool PhoneBook::isNumeric(std::string& pageNum)
+{
+    for (int i = 0; i < pageNum.size(); i++)
+    {
+        if (i > 1)
+            return false;
+        if (!std::isdigit(pageNum[i]))
+            return false;
+        else
+        {
+            int number = std::stoi(pageNum);
+            if (number < 0 && number > 9)
+                return false;
+        }
+    }
+    return true;
+}
+
+/**
+ * Searches a contact based on the index number of the phonebook
  */ 
 void PhoneBook::searchContact()
 {
     std::string pageNum;
-    
-    displayContacts();
-    std::cout << "\nWhich page do you want to see?\nplease give a number 1 - 8\n\n";
-    std::cin >> pageNum;
-    int number = std::stoi(pageNum);
-    if (number > 0 && number < 9)
-        printContact(number);
-    else
-        std::cout << "\nPlease enter a numeric character from 1 till 8\n\n";
+
+    printPhoneBook();
+    std::cout << "\nWhich page do you want to see?\n\n";
+    while (true)
+    {
+        std::cout << "\nPlease give a number 1 - 8\n\n";
+        std::cin >> pageNum;
+
+        if (isNumeric(pageNum))
+        {
+            int number = std::stoi(pageNum);
+            if (number >= 1 && number <= 8)
+            {
+                printContact(number);
+                break;
+            }
+            else
+                std::cout << "\nPlease enter a number between 1 and 8.\n\n";
+        }
+    }
 }
+
 
 int PhoneBook::getContactIndex() const
 {
@@ -40,7 +73,7 @@ int PhoneBook::getContactIndex() const
 
 /**
  * @todo 
- * 1. parsing checks on correct input of each field need to do in method
+ * 1. parsing checks on correct input of each field need to do in Contact.cpp
  * 2. no empty fields are allowed, promt user again to fill in field
  */
 void PhoneBook::addContact()
@@ -98,7 +131,7 @@ void PhoneBook::printContact(int page)
 /**
  * displays all entered contacts and truncates entries longer than with 10
  */ 
-void PhoneBook::displayContacts()
+void PhoneBook::printPhoneBook()
 {
    for (int index = 0; index < 8; index++)
     {
@@ -107,13 +140,4 @@ void PhoneBook::displayContacts()
                   << std::setw(10) << std::right << truncateInput(contacts[index].getPhoneNumber()) << " | "
                   << std::setw(10) << std::right << truncateInput(contacts[index].getDarkestSecret()) << std::endl;
     }
-}
-
-
-/**
- * @todo make the method
- */ 
-void PhoneBook::printPhoneBook()
-{
-    
 }

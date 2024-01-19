@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 21:15:51 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/18 14:47:37 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/19 21:28:32 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,48 @@ Contact::Contact(){};
 
 Contact::~Contact(){};
 
+/**
+ * @todo do input checks on the setters
+*/
 void Contact::setFirstName()
 {
 	std::cout << "Enter first name: ";
 	std::cin >> firstName;
+	// if (firstName == NULL)
+	// 	std::cout << "Field cannot be empty";
+	//prompt user again for input
 }
 
+/**
+ * @todo do input checks on the setters
+*/
 void Contact::setLastName()
 {
 	std::cout << "Enter last name: ";
 	std::cin >> lastName;
 }
 
+/**
+ * @todo do input checks on the setters
+*/
 void Contact::setNickName()
 {
 	std::cout << "Enter nick name: ";
 	std::cin >> nickName;
 }
 
+/**
+ * @todo do input checks on the setters
+*/
 void Contact::setPhoneNumber()
 {
 	std::cout << "Enter phone number: ";
 	std::cin >> phoneNumber;
 }
 
+/**
+ * @todo do input checks on the setters
+*/
 void Contact::setDarkestSecret()
 {
 	std::cout << "Enter darkest secret: ";
