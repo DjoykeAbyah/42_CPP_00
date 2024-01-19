@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/18 22:13:22 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/19 20:02:20 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,28 @@ PhoneBook::~PhoneBook(){};
 
 /**
  * @todo 
- * give error message if user inputs non-numeric char
- * or numeric char < 0 or > 8
- * ◦ Display the saved contacts as a list of 4 columns: index, first name, last 
- * name and nickname.
  * ◦ Each column must be 10 characters wide. A pipe character (’|’) separates
  * them. The text must be right-aligned. If the text is longer than the column,
  * it must be truncated and the last displayable character must be replaced by a
  * dot (’.’).
- * ◦ Then, prompt the user again for the index of the entry to display. If the index
- * is out of range or wrong, define a relevant behavior. Otherwise, display the
- * contact information, one field per line
  */ 
 void PhoneBook::searchContact()
 {
     std::string pageNum;
     
     displayContacts();
-    std::cout << "Which page do you want to see?\n";
-    std::cout << "please give a number 1 - 8\n";
+    std::cout << "\nWhich page do you want to see?\nplease give a number 1 - 8\n\n";
     std::cin >> pageNum;
-    int number = std::stoi(pageNum);
-    printContact(number);
+    if (pageNum.size() == 1)
+    {
+        int number = std::stoi(pageNum);
+        if (number > 0 && number < 9)
+            printContact(number);
+        else
+            std::cout << "\nPlease enter a numeric character from 1 till 8\n\n";
+    }
+    else
+        std::cout << "\nPlease enter a numeric character from 1 till 8\n\n";
 }
 
 int PhoneBook::getContactIndex() const
@@ -49,7 +49,7 @@ int PhoneBook::getContactIndex() const
 
 /**
  * @todo 
- * 1. parsing checks on correct input of each field
+ * 1. parsing checks on correct input of each field need to do in method
  * 2. no empty fields are allowed, promt user again to fill in field
  */
 void PhoneBook::addContact()
@@ -76,13 +76,26 @@ void PhoneBook::deleteContact()
 }
 
 /**
- * @todo add user input parsing checks
+ * Truncates the text if it's longer than 10 characters 
+ * and replace the last displayable character with a dot
+*/
+std::string PhoneBook::truncateInput(const std::string& input)
+{
+    const int columnWidth = 10;
+    if (input.length() > columnWidth)
+        return input.substr(0, columnWidth - 1) + ".";
+    else
+        return input;
+}
+
+/**
+ * displays one contact
  */ 
 void PhoneBook::printContact(int page)
 {
     page -= 1;
     {
-        std::cout << "Contact information:\n"
+        std::cout << "\nContact information:\n\n"
               << "First Name: " << contacts[page].getFirstName() << "\n"
               << "Last Name: " << contacts[page].getLastName() << "\n"
               << "Nickname: " << contacts[page].getNickName() << "\n"
@@ -91,14 +104,17 @@ void PhoneBook::printContact(int page)
     }
 }
 
-void PhoneBook::displayContacts() //const so the function can't modify the content
+/**
+ * displays all entered contacts and truncates entries longer than with 10
+ */ 
+void PhoneBook::displayContacts()
 {
    for (int index = 0; index < 8; index++)
     {
-        std::cout << std::setw(10) << contacts[index].getFirstName() << " | "
-                    << std::setw(10) << contacts[index].getLastName() << " | " 
-                    << std::setw(10) << contacts[index].getPhoneNumber() << " | "
-                    << std::setw(10) << contacts[index].getDarkestSecret() << std::endl;
+        std::cout << std::setw(10) << std::right << truncateInput(contacts[index].getFirstName()) << " | "
+                  << std::setw(10) << std::right << truncateInput(contacts[index].getLastName()) << " | " 
+                  << std::setw(10) << std::right << truncateInput(contacts[index].getPhoneNumber()) << " | "
+                  << std::setw(10) << std::right << truncateInput(contacts[index].getDarkestSecret()) << std::endl;
     }
 }
 

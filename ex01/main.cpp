@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/18 22:15:22 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/19 19:41:41 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void prompt()
 {
 	std::cout << "Welcome to my Phonebook let's go 80's!!\n";
 	std::cout << "to use this phonebook choose between the following options:\n";
-	std::cout << "enter ADD, SEARCH or EXIT" << '\n';
 }
 
 /**

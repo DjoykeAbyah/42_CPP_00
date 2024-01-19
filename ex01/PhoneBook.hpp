@@ -6,7 +6,7 @@
 /*   By: djoyke <djoyke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/13 23:01:58 by djoyke        #+#    #+#                 */
-/*   Updated: 2024/01/18 22:09:21 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/19 19:54:27 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ class PhoneBook
 	void printContact(int page);
 	void printPhoneBook();
 	void displayContacts();
+	std::string truncateInput(const std::string& input);
 };
 
 #endif
