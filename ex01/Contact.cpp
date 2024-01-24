@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 21:15:51 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/19 21:28:32 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/24 21:47:06 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,52 @@ Contact::Contact(){};
 
 Contact::~Contact(){};
 
+bool Contact::isAlphabetic(const std::string str)
+{
+	for (int i = 0; i < str.size(); i++)
+	{
+		if (!isalpha(str[i]))
+			return false;
+	}
+	return true;
+}
+
 /**
- * @todo do input checks on the setters
-*/
+ * get rid of the double enter after giving input
+ */
+void Contact::nameCheck(std::string& input, const std::string& prompt)
+{
+	do
+    {
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << prompt;
+        std::getline(std::cin, input);
+        if (input.empty())
+        {
+            std::cout << "Field cannot be empty. press Enter to try again\n";
+            continue;  // Skip the remaining checks and prompt again
+        }
+        if (!isAlphabetic(input))
+		{
+            std::cout << "Invalid input. Press enter to try again\n";
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+    } while (input.empty() || !isAlphabetic(input));
+}
+
 void Contact::setFirstName()
 {
-	std::cout << "Enter first name: ";
-	std::cin >> firstName;
-	// if (firstName == NULL)
-	// 	std::cout << "Field cannot be empty";
-	//prompt user again for input
+	nameCheck(firstName, "Enter first name in alphabetic characters: ");
 }
 
-/**
- * @todo do input checks on the setters
-*/
 void Contact::setLastName()
 {
-	std::cout << "Enter last name: ";
-	std::cin >> lastName;
+	nameCheck(lastName, "Enter last name in alphabetic characters: ");
 }
 
-/**
- * @todo do input checks on the setters
-*/
 void Contact::setNickName()
 {
-	std::cout << "Enter nick name: ";
-	std::cin >> nickName;
+	nameCheck(lastName, "Enter nickname in alphabetic characters: ");
 }
 
 /**
