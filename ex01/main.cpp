@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/19 19:41:41 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/28 16:13:20 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,12 @@ void prompt()
 /**
  * @todo 
  * 1. what to do when phonebook is empty and someoe types SEARCH
- * 2. display phonebook
- * 3. input check for contact elememts
- * 4. incorrect phonebook commands (other than ADD, SEARCH, EXIT, DELETE)
- * 5. Delete method
- * 6. make sure contact cant have empty fields
- * 7. make sure phonebook is empty at start
- * 8. give correct messages at exit etc
- * 9. delete unnecessary comments above functions, look for best practice in commenting methods
- * 10. make sure ADD SEARCH DELETE are in capital letters, throw error message if not
+ * 2. what to do when someone wants to see index that is empty
+ * 3. make Delete method
+ * 4. make sure phonebook is empty at start
+ * 5. give correct messages at exit etc
+ * 6. delete unnecessary comments above functions, look for best practice in commenting methods
+ * 7. make sure ADD SEARCH DELETE are in capital letters, throw error message if not
  * 
  * @note 
  * lenght returns an unsigned integral value 
@@ -47,7 +44,7 @@ int main()
 	std::string input;
 	prompt();
 
-	while (1)
+	while (input != "EXIT")
 	{
 		std::cout << "enter ADD, SEARCH or EXIT" << '\n';
 		std::cin >> input;
@@ -60,16 +57,18 @@ int main()
         	std::cout << "Contact added at index: " << currentIndex << '\n';
 		}
 		else if (input == "SEARCH")
-		{
 			phoneBook.searchContact();
-		}
-		else if (input == "EXIT")
+		else if (input == "DELETE")
 		{
-			//delete contacts
-			exit(0);
+			//call delete function
 		}
 		else
-			return 0;
+			std::cout << "option doesn't exist" << '\n';
+	}
+	if (input == "EXIT")
+	{
+		//delete contacts
+		exit(0);
 	}
 	return 0;
 }

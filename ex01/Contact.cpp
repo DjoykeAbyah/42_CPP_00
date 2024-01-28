@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 21:15:51 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/28 15:40:52 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/28 16:12:34 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,23 @@ bool Contact::isAlphabetic(const std::string str)
 	return true;
 }
 
-/**
- * @todo get rid of the double enter after giving input
- */
 void Contact::nameCheck(std::string& input, const std::string& prompt)
 {
-	do
+    bool isValidInput = false;
+
+    while (!isValidInput)
     {
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << prompt;
-        std::getline(std::cin, input);
+		std::cin >> input;
+		std::cout << std::endl;
         if (input.empty())
-        {
-            std::cout << "Field cannot be empty. press Enter to try again\n";
-            continue;  // Skip the remaining checks and prompt again
-        }
-        if (!isAlphabetic(input))
-		{
-            std::cout << "Invalid input. Press enter to try again\n";
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		}
-    } while (input.empty() || !isAlphabetic(input));
+            std::cout << "Field cannot be empty. Press Enter to try again" << std::endl;
+        else if (!isAlphabetic(input))
+            std::cout << "Invalid input. Press Enter to try again" << std::endl;
+        else
+            isValidInput = true;
+    }
 }
 
 bool Contact::digitCheck(std::string& input)
@@ -66,6 +62,7 @@ void Contact::phoneNumberCheck()
 	{
 		std::cout << "Enter phone number: ";
 		std::cin >> phoneNumber;
+		std::cout << std::endl;
 		if (digitCheck(phoneNumber))
 			isValidInput = true;
 		else 
@@ -93,22 +90,15 @@ void Contact::setNickName()
 	nameCheck(nickName, "Enter nickname in alphabetic characters: ");
 }
 
-/**
- * @todo do input checks on the setters
-*/
 void Contact::setPhoneNumber()
 {
 	phoneNumberCheck();
 }
 
-/**
- * @todo do input checks on the setters
-*/
 void Contact::setDarkestSecret()
 {
 	std::cout << "Enter darkest secret: ";
-	// Ignore any previous newline character in the input buffer
-    std::cin.ignore();
+    std::cin.ignore(); 	// Ignore any previous newline character in the input buffer
     std::getline(std::cin, darkestSecret);
 }
 
