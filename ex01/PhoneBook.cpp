@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/19 21:25:10 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/28 16:30:05 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ bool PhoneBook::isNumeric(std::string& pageNum)
 
 /**
  * Searches a contact based on the index number of the phonebook
+ * @todo throw error message and retry if user picks empty entry
  */ 
 void PhoneBook::searchContact()
 {
@@ -50,7 +51,6 @@ void PhoneBook::searchContact()
     {
         std::cout << "\nPlease give a number 1 - 8\n\n";
         std::cin >> pageNum;
-
         if (isNumeric(pageNum))
         {
             int number = std::stoi(pageNum);
@@ -64,7 +64,6 @@ void PhoneBook::searchContact()
         }
     }
 }
-
 
 int PhoneBook::getContactIndex() const
 {
@@ -88,15 +87,29 @@ void PhoneBook::addContact()
     contactIndex++;
 }
 
-/**
- * @todo 
- * 1. make the deleteContact function
- * 2. add parsing checks on user input
- */
 void PhoneBook::deleteContact()
 {
-    //delete a contact based on number 1 - 8
-    //which is array index 0 - 7
+    std::string pageNum;
+    
+    printPhoneBook();
+    std::cout << "\nWhich contact do you want to delete?\n\n";
+    while (true)
+    {
+        std::cout << "\nPlease give a number 1 - 8\n\n";
+        std::cin >> pageNum;
+        if (isNumeric(pageNum))
+        {
+            int number = std::stoi(pageNum);
+            if (number >= 1 && number <= 8)
+            {
+                number -= 1;
+                contacts[number].resetContact();
+                break;
+            }
+            else
+                std::cout << "\nPlease enter a number between 1 and 8.\n\n";
+        }
+    }
 }
 
 /**

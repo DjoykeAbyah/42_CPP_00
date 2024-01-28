@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 21:15:51 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/28 16:12:34 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/28 16:28:35 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,16 @@ void Contact::phoneNumberCheck()
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
+}
+
+
+void Contact::resetContact() 
+{
+    firstName.clear();
+    lastName.clear();
+    nickName.clear();
+    phoneNumber.clear();
+    darkestSecret.clear();
 }
 
 void Contact::setFirstName()

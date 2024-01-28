@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/28 16:13:20 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/28 16:32:31 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ void prompt()
  * @todo 
  * 1. what to do when phonebook is empty and someoe types SEARCH
  * 2. what to do when someone wants to see index that is empty
- * 3. make Delete method
- * 4. make sure phonebook is empty at start
- * 5. give correct messages at exit etc
- * 6. delete unnecessary comments above functions, look for best practice in commenting methods
- * 7. make sure ADD SEARCH DELETE are in capital letters, throw error message if not
+ * 3. make sure phonebook is empty at start
+ * 4. give correct messages at exit etc
+ * 5. delete unnecessary comments above functions, look for best practice in commenting methods
+ * 6. make sure ADD SEARCH DELETE are in capital letters, throw error message if not
  * 
  * @note 
  * lenght returns an unsigned integral value 
@@ -43,10 +42,9 @@ int main()
 	PhoneBook phoneBook;
 	std::string input;
 	prompt();
-
 	while (input != "EXIT")
 	{
-		std::cout << "enter ADD, SEARCH or EXIT" << '\n';
+		std::cout << "enter ADD, SEARCH, DELETE or EXIT" << '\n';
 		std::cin >> input;
 		std::cout << "you chose " << input << '\n';
 		if (input == "ADD")
@@ -59,16 +57,11 @@ int main()
 		else if (input == "SEARCH")
 			phoneBook.searchContact();
 		else if (input == "DELETE")
-		{
-			//call delete function
-		}
+			phoneBook.deleteContact();
 		else
 			std::cout << "option doesn't exist" << '\n';
 	}
 	if (input == "EXIT")
-	{
-		//delete contacts
 		exit(0);
-	}
 	return 0;
 }
