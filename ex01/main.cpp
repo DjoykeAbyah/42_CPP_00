@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/28 16:32:31 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/28 16:43:53 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void prompt()
 /**
  * @todo 
  * 1. what to do when phonebook is empty and someoe types SEARCH
- * 2. what to do when someone wants to see index that is empty
+ * 2. how to do this in a more c++ way
  * 3. make sure phonebook is empty at start
  * 4. give correct messages at exit etc
  * 5. delete unnecessary comments above functions, look for best practice in commenting methods
