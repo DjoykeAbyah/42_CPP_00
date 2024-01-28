@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/28 16:43:53 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/28 22:01:19 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,8 @@ void prompt()
 
 /**
  * @todo 
- * 1. what to do when phonebook is empty and someoe types SEARCH
- * 2. how to do this in a more c++ way
- * 3. make sure phonebook is empty at start
- * 4. give correct messages at exit etc
- * 5. delete unnecessary comments above functions, look for best practice in commenting methods
- * 6. make sure ADD SEARCH DELETE are in capital letters, throw error message if not
+ * 1. how to do this in a more c++ way
+ * 2. delete unnecessary comments above functions, look for best practice in commenting methods
  * 
  * @note 
  * lenght returns an unsigned integral value 
@@ -44,7 +40,7 @@ int main()
 	prompt();
 	while (input != "EXIT")
 	{
-		std::cout << "enter ADD, SEARCH, DELETE or EXIT" << '\n';
+		std::cout << "enter ADD, SEARCH, DELETE or EXIT in capital letters" << '\n';
 		std::cin >> input;
 		std::cout << "you chose " << input << '\n';
 		if (input == "ADD")
@@ -62,6 +58,9 @@ int main()
 			std::cout << "option doesn't exist" << '\n';
 	}
 	if (input == "EXIT")
+	{
+		std::cout << "you chose EXIT, bye now!\n";
 		exit(0);
+	}
 	return 0;
 }

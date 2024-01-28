@@ -6,7 +6,7 @@
 /*   By: djoyke <djoyke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/13 23:01:58 by djoyke        #+#    #+#                 */
-/*   Updated: 2024/01/19 21:24:45 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/28 22:03:56 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ class PhoneBook
 
 	void searchContact();
 	void addContact();
-	int getContactIndex() const;//why const here?
+	int getContactIndex() const;
 	void deleteContact();
 	void printContact(int page);
 	void printPhoneBook();
