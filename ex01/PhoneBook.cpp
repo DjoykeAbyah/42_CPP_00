@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/28 16:39:48 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/28 16:43:12 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ bool PhoneBook::isNumeric(std::string& pageNum)
 
 /**
  * Searches a contact based on the index number of the phonebook
- * @todo throw error message and retry if user picks empty entry
  */ 
 void PhoneBook::searchContact()
 {
