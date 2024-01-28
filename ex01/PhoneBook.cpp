@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/28 22:03:12 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/28 22:20:44 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,11 @@ int PhoneBook::getContactIndex() const
 
 /**
  * adds contact and contact info to the array
+ * @todo give warning before overwriting?
  */
 void PhoneBook::addContact()
 {
-    if (contactIndex == 7)
+    if (contactIndex == 8)
         contactIndex = 0;
     contacts[contactIndex].setFirstName();
     contacts[contactIndex].setLastName();
@@ -93,7 +94,7 @@ void PhoneBook::addContact()
 }
 
 /**
- * adds contact and contact info on specific index of the array
+ * deletes contact and contact info on specific index of the array
  */
 void PhoneBook::deleteContact()
 {
