@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/28 16:30:05 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/28 16:39:48 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ void PhoneBook::searchContact()
             int number = std::stoi(pageNum);
             if (number >= 1 && number <= 8)
             {
+                if (contacts[number - 1].getFirstName().empty())
+                {
+                    std::cout << "\nEntry is empty\n\n";
+                    break ;
+                }
                 printContact(number);
                 break;
             }
@@ -71,9 +76,7 @@ int PhoneBook::getContactIndex() const
 }
 
 /**
- * @todo 
- * 1. parsing checks on correct input of each field need to do in Contact.cpp
- * 2. no empty fields are allowed, promt user again to fill in field
+ * adds contact and contact info to the array
  */
 void PhoneBook::addContact()
 {
@@ -87,6 +90,9 @@ void PhoneBook::addContact()
     contactIndex++;
 }
 
+/**
+ * adds contact and contact info on specific index of the array
+ */
 void PhoneBook::deleteContact()
 {
     std::string pageNum;

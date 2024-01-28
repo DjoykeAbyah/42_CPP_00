@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 21:15:51 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/28 16:28:35 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/28 16:35:56 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void Contact::phoneNumberCheck()
 		}
 	}
 }
-
 
 void Contact::resetContact() 
 {
