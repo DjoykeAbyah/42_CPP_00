@@ -6,7 +6,7 @@
 /*   By: djoyke <djoyke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/13 23:13:19 by djoyke        #+#    #+#                 */
-/*   Updated: 2024/01/24 21:22:58 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/28 15:39:10 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ class Contact
 	
 		bool isAlphabetic(const std::string str);
 		void nameCheck(std::string& input, const std::string& prompt);
+		void phoneNumberCheck();
+		bool digitCheck(std::string& input);
 };
 
 #endif

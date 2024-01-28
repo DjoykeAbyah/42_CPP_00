@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 21:15:51 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/24 21:47:06 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/28 15:40:52 by djoyke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ bool Contact::isAlphabetic(const std::string str)
 }
 
 /**
- * get rid of the double enter after giving input
+ * @todo get rid of the double enter after giving input
  */
 void Contact::nameCheck(std::string& input, const std::string& prompt)
 {
@@ -49,6 +49,35 @@ void Contact::nameCheck(std::string& input, const std::string& prompt)
     } while (input.empty() || !isAlphabetic(input));
 }
 
+bool Contact::digitCheck(std::string& input)
+{
+	for (int i = 0; i < input.size(); i++)
+	{
+		if (!std::isdigit(input[i]))
+			return false;
+	}
+	return true;
+}
+
+void Contact::phoneNumberCheck()
+{
+	bool isValidInput = false;
+	while (!isValidInput) 
+	{
+		std::cout << "Enter phone number: ";
+		std::cin >> phoneNumber;
+		if (digitCheck(phoneNumber))
+			isValidInput = true;
+		else 
+		{
+			std::cerr << "Invalid input. Please give a valid phone number." << std::endl;
+			// Clear the input buffer to handle invalid input
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	}
+}
+
 void Contact::setFirstName()
 {
 	nameCheck(firstName, "Enter first name in alphabetic characters: ");
@@ -61,7 +90,7 @@ void Contact::setLastName()
 
 void Contact::setNickName()
 {
-	nameCheck(lastName, "Enter nickname in alphabetic characters: ");
+	nameCheck(nickName, "Enter nickname in alphabetic characters: ");
 }
 
 /**
@@ -69,8 +98,7 @@ void Contact::setNickName()
 */
 void Contact::setPhoneNumber()
 {
-	std::cout << "Enter phone number: ";
-	std::cin >> phoneNumber;
+	phoneNumberCheck();
 }
 
 /**
