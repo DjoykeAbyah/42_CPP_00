@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/28 22:20:44 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/29 13:41:30 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ bool PhoneBook::isNumeric(std::string& pageNum)
 
 /**
  * Searches a contact based on the index number of the phonebook
+ * @todo do I need to say the book is empty if it is?
  */ 
 void PhoneBook::searchContact()
 {
@@ -113,6 +114,7 @@ void PhoneBook::deleteContact()
             {
                 number -= 1;
                 contacts[number].resetContact();
+                std::cout << "\nYou've deleted entry nr." << pageNum << "\n\n";
                 break;
             }
             else

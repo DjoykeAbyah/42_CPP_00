@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/28 22:01:19 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/29 13:54:34 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,9 @@ void prompt()
 }
 
 /**
+ * main method
  * @todo 
- * 1. how to do this in a more c++ way
- * 2. delete unnecessary comments above functions, look for best practice in commenting methods
- * 
- * @note 
- * lenght returns an unsigned integral value 
- * so if you want to assign to int you should static_cast<int>
- * name.lenght() because lenght is a member function
+ * 1. delete unnecessary comments above functions, look for best practice in commenting methods
  */
 int main()
 {
@@ -47,7 +42,7 @@ int main()
 		{
 			int currentIndex = 0;
 			phoneBook.addContact();
-			currentIndex = phoneBook.getContactIndex(); // Retrieve the current index
+			currentIndex = phoneBook.getContactIndex();// Retrieve the current index
         	std::cout << "Contact added at index: " << currentIndex << '\n';
 		}
 		else if (input == "SEARCH")

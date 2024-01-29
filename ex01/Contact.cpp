@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 21:15:51 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/28 16:35:56 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/01/29 14:48:35 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ Contact::Contact(){};
 
 Contact::~Contact(){};
 
+/**
+ * checks if input is alphabetic
+*/
 bool Contact::isAlphabetic(const std::string str)
 {
 	for (int i = 0; i < str.size(); i++)
@@ -26,15 +29,19 @@ bool Contact::isAlphabetic(const std::string str)
 	return true;
 }
 
+/**
+ * checks if input is valid by checking if it's empty or alphabetic
+ * @todo get rid of double enter
+*/
 void Contact::nameCheck(std::string& input, const std::string& prompt)
 {
     bool isValidInput = false;
 
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     while (!isValidInput)
     {
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << prompt;
-		std::cin >> input;
+		std::getline(std::cin, input, '\n');
 		std::cout << std::endl;
         if (input.empty())
             std::cout << "Field cannot be empty. Press Enter to try again" << std::endl;
@@ -45,6 +52,9 @@ void Contact::nameCheck(std::string& input, const std::string& prompt)
     }
 }
 
+/**
+ * checks if input is numeric
+*/
 bool Contact::digitCheck(std::string& input)
 {
 	for (int i = 0; i < input.size(); i++)
@@ -55,26 +65,32 @@ bool Contact::digitCheck(std::string& input)
 	return true;
 }
 
+/**
+ * checks if input is alphabetic
+ * @todo need to get rid of double enter
+*/
 void Contact::phoneNumberCheck()
 {
 	bool isValidInput = false;
-	while (!isValidInput) 
-	{
-		std::cout << "Enter phone number: ";
-		std::cin >> phoneNumber;
+
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    while (!isValidInput)
+    {
+        std::cout << "Enter phone number: ";
+		std::getline(std::cin, phoneNumber, '\n');
 		std::cout << std::endl;
-		if (digitCheck(phoneNumber))
-			isValidInput = true;
-		else 
-		{
-			std::cerr << "Invalid input. Please give a valid phone number." << std::endl;
-			// Clear the input buffer to handle invalid input
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		}
-	}
+        if (phoneNumber.empty())
+            std::cout << "Field cannot be empty. Press Enter to try again" << std::endl;
+        else if (!digitCheck(phoneNumber))
+            std::cout << "Invalid input. Press Enter to try again" << std::endl;
+        else
+            isValidInput = true;
+    }
 }
 
+/**
+ * resets field to empty
+*/
 void Contact::resetContact() 
 {
     firstName.clear();
@@ -84,53 +100,94 @@ void Contact::resetContact()
     darkestSecret.clear();
 }
 
+/**
+ * firstname setter, uses nameCheck
+*/
 void Contact::setFirstName()
 {
 	nameCheck(firstName, "Enter first name in alphabetic characters: ");
 }
 
+/**
+ * lastname setter, uses nameCheck
+*/
 void Contact::setLastName()
 {
 	nameCheck(lastName, "Enter last name in alphabetic characters: ");
 }
 
+/**
+ * nickname setter, uses nameCheck
+*/
 void Contact::setNickName()
 {
 	nameCheck(nickName, "Enter nickname in alphabetic characters: ");
 }
 
+/**
+ * phonenumber setter, uses phoneNumberCheck
+*/
 void Contact::setPhoneNumber()
 {
 	phoneNumberCheck();
 }
 
+/**
+ * darkest secret setter
+ * @todo check for spaces?
+*/
 void Contact::setDarkestSecret()
 {
-	std::cout << "Enter darkest secret: ";
-    std::cin.ignore(); 	// Ignore any previous newline character in the input buffer
-    std::getline(std::cin, darkestSecret);
+	bool isValidInput = false;
+
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    while (!isValidInput)
+    {
+        std::cout << "Enter darkest secret: ";
+		std::getline(std::cin, darkestSecret, '\n');
+		std::cout << std::endl;
+        if (darkestSecret.empty())
+            std::cout << "Field cannot be empty. Press Enter to try again" << std::endl;
+        else
+            isValidInput = true;
+    }
 }
 
+/**
+ * gets firstname
+*/
 std::string Contact::getFirstName()
 {
 	return firstName;
 }
 
+/**
+ * gets lastname
+*/
 std::string Contact::getLastName()
 {
 	return lastName;
 }
 
+/**
+ * gets nickname
+*/
 std::string Contact::getNickName()
 {
 	return nickName;
 }
 
+/**
+ * gets phone number
+*/
 std::string Contact::getPhoneNumber()
 {
 	return phoneNumber;
 }
 
+/**
+ * gets darkest secret
+*/
 std::string Contact::getDarkestSecret()
 {
 	return darkestSecret;
