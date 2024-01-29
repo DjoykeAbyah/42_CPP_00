@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/29 15:29:57 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/29 15:56:44 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void prompt()
  * main method
  * @todo 
  * 1. delete unnecessary comments above functions, look for best practice in commenting methods
+ * 2. make main method shorter
+ * 3. make searchContact shorter
  */
 int main()
 {

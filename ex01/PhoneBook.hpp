@@ -6,7 +6,7 @@
 /*   By: djoyke <djoyke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/13 23:01:58 by djoyke        #+#    #+#                 */
-/*   Updated: 2024/01/29 14:26:03 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/29 15:55:02 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ class PhoneBook
 	void printPhoneBook();
 	std::string truncateInput(const std::string& input);
 	bool isNumeric(std::string& pageNum);
+	bool isEmpty();
 };
 
 #endif

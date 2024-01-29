@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 21:15:51 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/29 15:32:07 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/29 15:34:43 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,6 @@ void Contact::setPhoneNumber()
 
 /**
  * darkest secret setter
- * @todo check for spaces?
 */
 void Contact::setDarkestSecret()
 {

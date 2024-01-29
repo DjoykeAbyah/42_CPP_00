@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/29 13:41:30 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/29 15:56:01 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,31 @@ bool PhoneBook::isNumeric(std::string& pageNum)
 }
 
 /**
+ * check's if phoneBook is empty
+ */ 
+bool PhoneBook::isEmpty()
+{
+    for (int i = 0; i < 8; ++i)
+    {
+        if (!contacts[i].getFirstName().empty())
+            return false; // At least one contact is not empty
+    }
+    return true; // All contacts are empty
+}
+
+/**
  * Searches a contact based on the index number of the phonebook
- * @todo do I need to say the book is empty if it is?
  */ 
 void PhoneBook::searchContact()
 {
     std::string pageNum;
 
     printPhoneBook();
+    if (isEmpty())
+    {
+        std::cout << "\nPhoneBook is empty\n\n";
+        return ;
+    }
     std::cout << "\nWhich page do you want to see?\n\n";
     while (true)
     {
@@ -80,12 +97,29 @@ int PhoneBook::getContactIndex() const
 
 /**
  * adds contact and contact info to the array
- * @todo give warning before overwriting?
  */
 void PhoneBook::addContact()
 {
+    std::string answer;
+    bool isValidInput = false;
+    
     if (contactIndex == 8)
-        contactIndex = 0;
+    {
+        std::cout << "\nyou're about to overwrite the first contact, are you sure?\n";
+        while (!isValidInput)
+        {
+            std::cout << "\n type yes or no in lowercase: \n\n";
+            std::getline(std::cin, answer, '\n');
+            std::cout << std::endl;
+            if (answer == "no")
+                return ;
+            if (answer == "yes")
+            {
+                isValidInput = true;
+                contactIndex = 0;    
+            }
+        }
+    }
     contacts[contactIndex].setFirstName();
     contacts[contactIndex].setLastName();
     contacts[contactIndex].setNickName();
