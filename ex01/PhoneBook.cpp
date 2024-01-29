@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/29 15:56:01 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/29 17:41:00 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,29 @@ bool PhoneBook::isEmpty()
     return true; // All contacts are empty
 }
 
+bool PhoneBook::isValidPageIndex(int index)
+{
+    return index >= 1 && index <= 8;
+}
+
+bool PhoneBook::printContactIfNotEmpty(int index)
+{
+    int arrayIndex = index - 1;
+
+    if (contacts[arrayIndex].getFirstName().empty())
+    {
+        std::cout << "\nEntry is empty\n\n";
+        return false;
+    }
+    printContact(index);
+    return true;
+}
+
 /**
  * Searches a contact based on the index number of the phonebook
  */ 
 void PhoneBook::searchContact()
 {
-    std::string pageNum;
-
     printPhoneBook();
     if (isEmpty())
     {
@@ -67,19 +83,15 @@ void PhoneBook::searchContact()
     while (true)
     {
         std::cout << "\nPlease give a number 1 - 8\n\n";
+        std::string pageNum;
         std::cin >> pageNum;
         if (isNumeric(pageNum))
         {
             int number = std::stoi(pageNum);
-            if (number >= 1 && number <= 8)
+            if (isValidPageIndex(number))
             {
-                if (contacts[number - 1].getFirstName().empty())
-                {
-                    std::cout << "\nEntry is empty\n\n";
+                if (printContactIfNotEmpty(number))
                     break ;
-                }
-                printContact(number);
-                break;
             }
             else
                 std::cout << "\nPlease enter a number between 1 and 8.\n\n";
