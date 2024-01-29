@@ -6,7 +6,7 @@
 #    By: djoyke <djoyke@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/01/13 22:49:01 by djoyke        #+#    #+#                  #
-#    Updated: 2024/01/17 16:29:08 by dreijans      ########   odam.nl          #
+#    Updated: 2024/01/29 17:46:49 by dreijans      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,4 +59,4 @@ fclean: clean
 
 re:	fclean all
 
-.PHONY: all clean fclean re norminette run flags thread-flags
+.PHONY: all clean fclean re
