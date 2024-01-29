@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/29 13:54:34 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/29 15:29:57 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,22 @@ int main()
 		std::cout << "you chose " << input << '\n';
 		if (input == "ADD")
 		{
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			int currentIndex = 0;
 			phoneBook.addContact();
 			currentIndex = phoneBook.getContactIndex();// Retrieve the current index
         	std::cout << "Contact added at index: " << currentIndex << '\n';
 		}
 		else if (input == "SEARCH")
+		{
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			phoneBook.searchContact();
+		}
 		else if (input == "DELETE")
+		{
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');	
 			phoneBook.deleteContact();
+		}
 		else
 			std::cout << "option doesn't exist" << '\n';
 	}

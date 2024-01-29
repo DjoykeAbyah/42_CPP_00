@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 21:15:51 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/29 14:48:35 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/29 15:32:07 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,11 @@ bool Contact::isAlphabetic(const std::string str)
 
 /**
  * checks if input is valid by checking if it's empty or alphabetic
- * @todo get rid of double enter
 */
 void Contact::nameCheck(std::string& input, const std::string& prompt)
 {
     bool isValidInput = false;
 
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     while (!isValidInput)
     {
         std::cout << prompt;
@@ -67,13 +65,11 @@ bool Contact::digitCheck(std::string& input)
 
 /**
  * checks if input is alphabetic
- * @todo need to get rid of double enter
 */
 void Contact::phoneNumberCheck()
 {
 	bool isValidInput = false;
 
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     while (!isValidInput)
     {
         std::cout << "Enter phone number: ";
@@ -140,7 +136,6 @@ void Contact::setDarkestSecret()
 {
 	bool isValidInput = false;
 
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     while (!isValidInput)
     {
         std::cout << "Enter darkest secret: ";
