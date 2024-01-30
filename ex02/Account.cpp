@@ -6,15 +6,36 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/29 18:25:35 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/30 21:01:26 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/30 21:13:30 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
 
-Account::Account(int initial_deposit){};
+//google declaring static fields in c++
+//non-member attributes
+	static int	_nbAccounts = 0;
+	static int	_totalAmount = 0;
+	static int	_totalNbDeposits = 0;
+	static int	_totalNbWithdrawals = 0;
 
+//you gotta make this first duh
+Account::Account(int initial_deposit)
+{
+	//first time has to be 0;
+	_accountIndex = _nbAccounts;//its not always 0
+	_amount = 0;
+	_nbDeposits = initial_deposit;
+	_nbWithdrawals = 0;
+	_nbAccounts++;
+	_totalAmount += initial_deposit;
+	static int	_totalNbDeposits = 0;
+	static int	_totalNbWithdrawals = 0;
+	
+}
+
+//you gotta make this first duh
 Account::Account(){};
 
 Account::~Account(){};
@@ -60,17 +81,17 @@ void Account::displayAccountsInfos()
 */
 void Account::makeDeposit(int deposit)
 {
-	deposit += _amount;
+	_amount += deposit;
 	_nbDeposits += 1;
-	deposit += _totalAmount;
+	_totalAmount += deposit;
 	_totalNbDeposits += 1;
 }
 
 bool Account::makeWithdrawal(int withdrawal)
 {
-	withdrawal -= _amount;
+	_amount -= withdrawal;
 	_nbWithdrawals += 1;
-	withdrawal -= _totalAmount;
+	_totalAmount -= withdrawal;
 	_totalNbWithdrawals += 1;
 	return true;
 }
