@@ -6,7 +6,7 @@
 #    By: djoyke <djoyke@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/01/13 22:49:01 by djoyke        #+#    #+#                  #
-#    Updated: 2024/01/29 18:30:05 by dreijans      ########   odam.nl          #
+#    Updated: 2024/01/30 20:04:42 by dreijans      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CPPFLAGS	= -Wall -Wextra -Werror
 
 #sources
 SRC 		= 	Account.cpp		\
-				test.cpp		\
+				tests.cpp		\
 
 #object files
 OBJDIR 		= obj
