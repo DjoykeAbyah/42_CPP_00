@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/29 18:25:35 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/31 17:07:07 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/31 17:33:04 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 //google declaring static fields in c++
 //non-member attributes
-	static int	_nbAccounts = 0;
-	static int	_totalAmount = 0;
-	static int	_totalNbDeposits = 0;
-	static int	_totalNbWithdrawals = 0;
+int Account::_nbAccounts = 0;
+int	Account::_totalAmount = 0;
+int	Account::_totalNbDeposits = 0;
+int	Account::_totalNbWithdrawals = 0;
 
 //you gotta make this first duh
 Account::Account(int initial_deposit)
