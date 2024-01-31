@@ -6,11 +6,12 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/31 14:10:44 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/31 16:09:35 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include "Utils.hpp"
 
 PhoneBook::PhoneBook():contactIndex(0){};
 
@@ -121,8 +122,8 @@ void PhoneBook::addContact()
         while (!isValidInput)
         {
             std::cout << "\n type yes or no in lowercase: \n\n";
-            if (!std::getline(std::cin, answer, '\n'))
-                EXIT_FAILURE;
+            if (!safeGetLine(answer))
+                return ;
             std::cout << std::endl;
             if (answer == "no")
                 return ;

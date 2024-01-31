@@ -6,12 +6,13 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/31 14:10:50 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/31 16:04:33 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
+#include "Utils.hpp"
 #include <cstring>
 
 /**
@@ -52,49 +53,71 @@ void prompt()
 }
 
 /**
+ * protects getline
+ */
+bool safeGetLine(std::string& input) 
+{
+    if (!std::getline(std::cin, input, '\n'))
+    {
+        if (std::cin.eof())
+        {
+            std::cout << "EOF encountered. Exiting program.\n";
+            return false;
+        }
+        else
+        {
+            std::cout << "Error reading input. Exiting program.\n";
+            return false;
+        }
+    }
+    return true;
+}
+
+/**
  * main method
  */
 int main() 
 {
 	PhoneBook phoneBook;
-    std::string input;
+  std::string input;
     
-    prompt();
-    while (true) 
-	{
-        std::cout << "enter ADD, SEARCH, DELETE or EXIT in capital letters" << '\n';
-        std::cin >> input;
-        std::cout << "you chose " << input << '\n';
-        switch (getChoice(input)) 
-		{
-        case ADD: 
-        {
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            phoneBook.addContact();
-            break;
-        }
-        case SEARCH: 
-        {
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            phoneBook.searchContact();
-            break;
-        }
-        case DELETE: 
-        {
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            phoneBook.deleteContact();
-            break;
-        }
-        case EXIT: 
-        {
-            std::cout << "bye now!\n";
-            return 0;
-        }
-        case INVALID:
-        {
-            std::cout << "Option doesn't exist\n";
-            break;
-        }
+  prompt();
+  while (true) 
+  {
+    std::cout << "enter ADD, SEARCH, DELETE or EXIT in capital letters" << '\n';
+    if (!safeGetLine(input))
+      return 0;
+    std::cout << "you chose " << input << std::endl;
+    switch (getChoice(input)) 
+    {
+      case ADD: 
+      {
+          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+          phoneBook.addContact();
+          break;
+      }
+      case SEARCH: 
+      {
+          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+          phoneBook.searchContact();
+          break;
+      }
+      case DELETE: 
+      {
+          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+          phoneBook.deleteContact();
+          break;
+      }
+      case EXIT: 
+      {
+          std::cout << "bye now!\n";
+          return 0;
+      }
+      case INVALID:
+      {
+          std::cout << "Option doesn't exist\n";
+          break;
+      }
     }
   }
   return 0;
