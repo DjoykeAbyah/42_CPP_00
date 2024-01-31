@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/29 18:25:35 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/30 21:13:30 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/31 17:07:07 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,22 @@
 Account::Account(int initial_deposit)
 {
 	//first time has to be 0;
-	_accountIndex = _nbAccounts;//its not always 0
+	_accountIndex = _nbAccounts;
 	_amount = 0;
 	_nbDeposits = initial_deposit;
 	_nbWithdrawals = 0;
-	_nbAccounts++;
 	_totalAmount += initial_deposit;
-	static int	_totalNbDeposits = 0;
-	static int	_totalNbWithdrawals = 0;
-	
+	_nbAccounts++;
 }
 
-//you gotta make this first duh
-Account::Account(){};
+Account::Account()
+{
+	_accountIndex = _nbAccounts;
+	_amount = 0;
+	_nbDeposits = 0;
+	_nbWithdrawals = 0;	
+	_nbAccounts++;
+}
 
 Account::~Account(){};
 
@@ -52,7 +55,6 @@ int Account::getTotalAmount()
 
 int Account::getNbDeposits()
 {
-	//how to create total number of deposits?
 	return _totalNbDeposits;
 }
 
@@ -74,10 +76,7 @@ void Account::displayAccountsInfos()
 }
 
 /**
- * make disposit so
- * _amount
- * _nbDeposits
- * 
+ * makes disposit
 */
 void Account::makeDeposit(int deposit)
 {
@@ -89,6 +88,8 @@ void Account::makeDeposit(int deposit)
 
 bool Account::makeWithdrawal(int withdrawal)
 {
+	if (_amount < withdrawal)
+		return (false);
 	_amount -= withdrawal;
 	_nbWithdrawals += 1;
 	_totalAmount -= withdrawal;
