@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/29 17:41:00 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/31 14:10:44 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,8 @@ void PhoneBook::addContact()
         while (!isValidInput)
         {
             std::cout << "\n type yes or no in lowercase: \n\n";
-            std::getline(std::cin, answer, '\n');
+            if (!std::getline(std::cin, answer, '\n'))
+                EXIT_FAILURE;
             std::cout << std::endl;
             if (answer == "no")
                 return ;
@@ -148,6 +149,11 @@ void PhoneBook::deleteContact()
     std::string pageNum;
     
     printPhoneBook();
+    if (isEmpty())
+    {
+        std::cout << "\nPhoneBook is empty\n\n";
+        return ;
+    }
     std::cout << "\nWhich contact do you want to delete?\n\n";
     while (true)
     {

@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/29 17:42:56 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/31 14:10:50 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,35 +67,35 @@ int main()
         std::cout << "you chose " << input << '\n';
         switch (getChoice(input)) 
 		{
-            case ADD: 
-			{
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                phoneBook.addContact();
-                break;
-            }
-            case SEARCH: 
-			{
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                phoneBook.searchContact();
-                break;
-            }
-            case DELETE: 
-			{
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                phoneBook.deleteContact();
-                break;
-            }
-            case EXIT: 
-			{
-                std::cout << "you chose EXIT, bye now!\n";
-                return 0;
-            }
-            case INVALID:
-			{
-                std::cout << "Option doesn't exist\n";
-                break;
-			}
+        case ADD: 
+        {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            phoneBook.addContact();
+            break;
+        }
+        case SEARCH: 
+        {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            phoneBook.searchContact();
+            break;
+        }
+        case DELETE: 
+        {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            phoneBook.deleteContact();
+            break;
+        }
+        case EXIT: 
+        {
+            std::cout << "bye now!\n";
+            return 0;
+        }
+        case INVALID:
+        {
+            std::cout << "Option doesn't exist\n";
+            break;
         }
     }
-    return 0;
+  }
+  return 0;
 }

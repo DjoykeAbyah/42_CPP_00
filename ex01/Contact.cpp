@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 21:15:51 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/29 15:34:43 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/01/31 14:10:31 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void Contact::nameCheck(std::string& input, const std::string& prompt)
     while (!isValidInput)
     {
         std::cout << prompt;
-		std::getline(std::cin, input, '\n');
+		if (!std::getline(std::cin, input, '\n'))
+            EXIT_FAILURE;
 		std::cout << std::endl;
         if (input.empty())
             std::cout << "Field cannot be empty. Press Enter to try again" << std::endl;
@@ -73,7 +74,8 @@ void Contact::phoneNumberCheck()
     while (!isValidInput)
     {
         std::cout << "Enter phone number: ";
-		std::getline(std::cin, phoneNumber, '\n');
+		if (!std::getline(std::cin, phoneNumber, '\n'))
+            EXIT_FAILURE;
 		std::cout << std::endl;
         if (phoneNumber.empty())
             std::cout << "Field cannot be empty. Press Enter to try again" << std::endl;
@@ -138,7 +140,8 @@ void Contact::setDarkestSecret()
     while (!isValidInput)
     {
         std::cout << "Enter darkest secret: ";
-		std::getline(std::cin, darkestSecret, '\n');
+		if (!std::getline(std::cin, darkestSecret, '\n'))
+            EXIT_FAILURE;
 		std::cout << std::endl;
         if (darkestSecret.empty())
             std::cout << "Field cannot be empty. Press Enter to try again" << std::endl;

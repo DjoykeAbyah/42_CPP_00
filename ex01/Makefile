@@ -6,7 +6,7 @@
 #    By: djoyke <djoyke@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/01/13 22:49:01 by djoyke        #+#    #+#                  #
-#    Updated: 2024/01/29 17:46:49 by dreijans      ########   odam.nl          #
+#    Updated: 2024/01/31 14:04:07 by dreijans      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME 		= PhoneBook
 
 #compiler + flags
 CC			= c++
-CPPFLAGS	= -Wall -Wextra -Werror
+CPPFLAGS	= -Wall -Wextra -g -fsanitize=address
 
 #sources
 SRC 		= 	PhoneBook.cpp	\
