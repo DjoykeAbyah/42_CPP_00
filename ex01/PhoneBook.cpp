@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/03/06 18:02:49 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/03/06 18:05:28 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,14 +210,6 @@ void PhoneBook::printContact(int page)
  */ 
 void PhoneBook::printPhoneBook()
 {
-//    for (int index = 0; index < 8; index++)
-//     {
-//         std::cout << std::setw(10) << std::right << truncateInput(contacts[index].getFirstName()) << " | "
-//                   << std::setw(10) << std::right << truncateInput(contacts[index].getLastName()) << " | " 
-//                   << std::setw(10) << std::right << truncateInput(contacts[index].getPhoneNumber()) << " | "
-//                   << std::setw(10) << std::right << truncateInput(contacts[index].getDarkestSecret()) << std::endl;
-//     }
-
     int pageIndex = 1; // Starting page index
 
     for (int index = 0; index < 8; index++)
