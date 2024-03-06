@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/31 16:04:33 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/03/06 18:03:49 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int main()
     if (!safeGetLine(input))
       return 0;
     std::cout << "you chose " << input << std::endl;
+    std::cout << "press Enter" << std::endl;
     switch (getChoice(input)) 
     {
       case ADD: 

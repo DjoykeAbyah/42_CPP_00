@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/31 16:09:35 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/03/06 18:02:49 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,11 +210,22 @@ void PhoneBook::printContact(int page)
  */ 
 void PhoneBook::printPhoneBook()
 {
-   for (int index = 0; index < 8; index++)
+//    for (int index = 0; index < 8; index++)
+//     {
+//         std::cout << std::setw(10) << std::right << truncateInput(contacts[index].getFirstName()) << " | "
+//                   << std::setw(10) << std::right << truncateInput(contacts[index].getLastName()) << " | " 
+//                   << std::setw(10) << std::right << truncateInput(contacts[index].getPhoneNumber()) << " | "
+//                   << std::setw(10) << std::right << truncateInput(contacts[index].getDarkestSecret()) << std::endl;
+//     }
+
+    int pageIndex = 1; // Starting page index
+
+    for (int index = 0; index < 8; index++)
     {
-        std::cout << std::setw(10) << std::right << truncateInput(contacts[index].getFirstName()) << " | "
+        std::cout << std::setw(5) << std::right << pageIndex++ << " | "
+                  << std::setw(10) << std::right << truncateInput(contacts[index].getFirstName()) << " | "
                   << std::setw(10) << std::right << truncateInput(contacts[index].getLastName()) << " | " 
-                  << std::setw(10) << std::right << truncateInput(contacts[index].getPhoneNumber()) << " | "
-                  << std::setw(10) << std::right << truncateInput(contacts[index].getDarkestSecret()) << std::endl;
+                  << std::setw(15) << std::right << truncateInput(contacts[index].getPhoneNumber()) << " | "
+                  << std::setw(20) << std::right << truncateInput(contacts[index].getDarkestSecret()) << std::endl;
     }
 }
