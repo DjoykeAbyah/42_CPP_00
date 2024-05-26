@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 21:15:51 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/31 15:45:07 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/26 16:09:28 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void Contact::nameCheck(std::string& input, const std::string& prompt)
         std::cout << prompt;
         if (!safeGetLine(input))
             break ;
-		std::cout << std::endl;
         if (input.empty())
             std::cout << "Field cannot be empty. Press Enter to try again" << std::endl;
         else if (!isAlphabetic(input))
@@ -75,12 +74,11 @@ void Contact::phoneNumberCheck()
     while (!isValidInput)
     {
         std::cout << "Enter phone number: ";
-        if (!safeGetLine(phoneNumber))
+        if (!safeGetLine(_phoneNumber))
             break ;
-		std::cout << std::endl;
-        if (phoneNumber.empty())
+        if (_phoneNumber.empty())
             std::cout << "Field cannot be empty. Press Enter to try again" << std::endl;
-        else if (!digitCheck(phoneNumber))
+        else if (!digitCheck(_phoneNumber))
             std::cout << "Invalid input. Press Enter to try again" << std::endl;
         else
             isValidInput = true;
@@ -92,11 +90,11 @@ void Contact::phoneNumberCheck()
 */
 void Contact::resetContact() 
 {
-    firstName.clear();
-    lastName.clear();
-    nickName.clear();
-    phoneNumber.clear();
-    darkestSecret.clear();
+    _firstName.clear();
+    _lastName.clear();
+    _nickName.clear();
+    _phoneNumber.clear();
+    _darkestSecret.clear();
 }
 
 /**
@@ -104,7 +102,7 @@ void Contact::resetContact()
 */
 void Contact::setFirstName()
 {
-	nameCheck(firstName, "Enter first name in alphabetic characters: ");
+	nameCheck(_firstName, "Enter first name in alphabetic characters: ");
 }
 
 /**
@@ -112,7 +110,7 @@ void Contact::setFirstName()
 */
 void Contact::setLastName()
 {
-	nameCheck(lastName, "Enter last name in alphabetic characters: ");
+	nameCheck(_lastName, "Enter last name in alphabetic characters: ");
 }
 
 /**
@@ -120,7 +118,7 @@ void Contact::setLastName()
 */
 void Contact::setNickName()
 {
-	nameCheck(nickName, "Enter nickname in alphabetic characters: ");
+	nameCheck(_nickName, "Enter nickname in alphabetic characters: ");
 }
 
 /**
@@ -141,10 +139,10 @@ void Contact::setDarkestSecret()
     while (!isValidInput)
     {
         std::cout << "Enter darkest secret: ";
-        if (!safeGetLine(darkestSecret))
+        if (!safeGetLine(_darkestSecret))
             break ;
 		std::cout << std::endl;
-        if (darkestSecret.empty())
+        if (_darkestSecret.empty())
             std::cout << "Field cannot be empty. Press Enter to try again" << std::endl;
         else
             isValidInput = true;
@@ -156,7 +154,7 @@ void Contact::setDarkestSecret()
 */
 std::string Contact::getFirstName()
 {
-	return firstName;
+	return _firstName;
 }
 
 /**
@@ -164,7 +162,7 @@ std::string Contact::getFirstName()
 */
 std::string Contact::getLastName()
 {
-	return lastName;
+	return _lastName;
 }
 
 /**
@@ -172,7 +170,7 @@ std::string Contact::getLastName()
 */
 std::string Contact::getNickName()
 {
-	return nickName;
+	return _nickName;
 }
 
 /**
@@ -180,7 +178,7 @@ std::string Contact::getNickName()
 */
 std::string Contact::getPhoneNumber()
 {
-	return phoneNumber;
+	return _phoneNumber;
 }
 
 /**
@@ -188,5 +186,5 @@ std::string Contact::getPhoneNumber()
 */
 std::string Contact::getDarkestSecret()
 {
-	return darkestSecret;
+	return _darkestSecret;
 }

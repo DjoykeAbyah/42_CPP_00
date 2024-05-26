@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/03/06 18:03:49 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/26 16:13:09 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ UserChoice getChoice(const std::string& input)
  */
 void prompt()
 {
-	std::cout << "Welcome to my Phonebook let's go 80's!!\n";
-	std::cout << "to use this phonebook choose between the following options:\n";
+  std::cout << BOLD_TEXT;
+	std::cout << CYAN "Welcome to my Phonebook let's go 80's!!\n";
+	std::cout << CYAN "this high end piece of technology has an ADD, SEARCH, EXIT, and even a DELETE option!\n\n\n\n\n";
+  std::cout << RESET;
 }
 
 /**
@@ -61,12 +63,14 @@ bool safeGetLine(std::string& input)
     {
         if (std::cin.eof())
         {
-            std::cout << "EOF encountered. Exiting program.\n";
+            std::cout << RED "EOF encountered. Exiting program.\n" << RESET << std::endl;
             return false;
         }
         else
         {
-            std::cout << "Error reading input. Exiting program.\n";
+            std::cout << RED "Error reading input. Exiting program.\n" << RESET << std::endl;
+            std::cin.clear();  // Clear error state
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             return false;
         }
     }
@@ -84,39 +88,35 @@ int main()
   prompt();
   while (true) 
   {
-    std::cout << "enter ADD, SEARCH, DELETE or EXIT in capital letters" << '\n';
+    std::cout << "            Enter ADD, SEARCH, DELETE or EXIT in capital letters: " << RESET;
     if (!safeGetLine(input))
       return 0;
-    std::cout << "you chose " << input << std::endl;
-    std::cout << "press Enter" << std::endl;
+    std::cout << "\n                           you chose: [" BOLD_TEXT MAGENTA << input <<  RESET "]\n\n\n\n\n" << std::endl;
     switch (getChoice(input)) 
     {
       case ADD: 
       {
-          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
           phoneBook.addContact();
           break;
       }
       case SEARCH: 
       {
-          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
           phoneBook.searchContact();
           break;
       }
       case DELETE: 
       {
-          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
           phoneBook.deleteContact();
           break;
       }
       case EXIT: 
       {
-          std::cout << "bye now!\n";
+          std::cout << BOLD_TEXT "bye now!\n" << RESET << std::endl;
           return 0;
       }
       case INVALID:
       {
-          std::cout << "Option doesn't exist\n";
+          std::cout << RED "Option doesn't exist\n" << RESET << std::endl;
           break;
       }
     }

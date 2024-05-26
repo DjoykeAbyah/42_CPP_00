@@ -6,7 +6,7 @@
 /*   By: djoyke <djoyke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/13 23:01:58 by djoyke        #+#    #+#                 */
-/*   Updated: 2024/01/29 17:36:29 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/26 15:32:14 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,17 @@
 # include <string>
 # include <iomanip> 
 # include "Contact.hpp"
+
+#define BOLD_TEXT "\033[1m"
+#define RESET "\033[0m"
+
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
+#define BLUE "\033[34m"
+#define MAGENTA "\033[35m"
+#define CYAN "\033[36m"
+#define WHITE "\033[37m"
 
 /**
  * PhoneBook class represents a simple phone book with a limited number of contacts.
