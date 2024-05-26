@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/05/26 16:36:52 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/26 17:11:37 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void PhoneBook::searchContact()
     printPhoneBook();
     if (isEmpty())
     {
-        std::cout << BLUE "\nPhoneBook is empty\n\n\n\n\n" << RESET << std::endl;
+        std::cout << BLUE "\nPhoneBook is empty\n\n\n" << RESET << std::endl;
         return ;
     }
     std::cout << "\nWhich page do you want to see?";
@@ -87,7 +87,7 @@ void PhoneBook::searchContact()
     {
         std::cout << " Please choose a number between 1 - 8: ";
         std::cin >> pageNum;
-        std::cout <<"\n                  you chose: [" BOLD_TEXT CYAN << pageNum << RESET "]" << std::endl;
+        std::cout <<"\n                           you chose: [" BOLD_TEXT CYAN << pageNum << RESET "]" << std::endl;
         if (isNumeric(pageNum))
         {
             int number = std::stoi(pageNum);
@@ -123,10 +123,10 @@ void PhoneBook::addContact()
         std::cout << BOLD_TEXT << "\n you're about to overwrite the first contact, are you sure?\n" << RESET <<std::endl;
         while (!isValidInput)
         {
-            std::cout << "\n type yes or no in lowercase: \n\n";
+            std::cout << "type yes or no in lowercase: \n";
             if (!safeGetLine(answer))
                 return ;
-            std::cout << "you chose: [" BOLD_TEXT << answer << RESET "]" << std::endl;
+            std::cout << "                           you chose: [" BOLD_TEXT << answer << RESET "]" << std::endl;
             std::cout << std::endl;
             if (answer == "no")
                 return ;
@@ -143,7 +143,7 @@ void PhoneBook::addContact()
     contacts[contactIndex].setPhoneNumber();
     contacts[contactIndex].setDarkestSecret();
     contactIndex++;
-    std::cout << GREEN "you've successfully added a new contact!\n\n\n\n\n" << RESET <<std::endl;
+    std::cout << GREEN "you've successfully added a new contact!\n\n\n" << RESET <<std::endl;
 }
 
 /**
@@ -156,22 +156,29 @@ void PhoneBook::deleteContact()
     printPhoneBook();
     if (isEmpty())
     {
-        std::cout << BLUE "\nPhoneBook is empty\n\n\n\n\n" << RESET << std::endl;
+        std::cout << BLUE "\nPhoneBook is empty\n\n\n" << RESET << std::endl;
         return ;
     }
-    std::cout << "\nWhich contact do you want to delete?\n\n";
+    std::cout << "\nWhich contact do you want to delete? ";
     while (true)
     {
-        std::cout << "\nPlease give a number 1 - 8\n\n";
+        std::cout << "Please give a number 1 - 8: ";
         std::cin >> pageNum;
+        std::cout << "                           you chose: [" BOLD_TEXT  CYAN<< pageNum << RESET "]" << std::endl;
         if (isNumeric(pageNum))
         {
             int number = std::stoi(pageNum);
             if (number >= 1 && number <= 8)
             {
                 number -= 1;
+                if (contacts[number].getFirstName().empty())
+                {
+                   std::cout << RED "\nthis entry does not exist\n\n\n" << RESET << std::endl;
+                   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                   continue; 
+                }
                 contacts[number].resetContact();
-                std::cout << GREEN "\nYou've successfully deleted entry nr." << pageNum << "\n\n\n\n\n" RESET << std::endl;
+                std::cout << GREEN "\nYou've successfully deleted entry nr." << pageNum << "\n\n\n" RESET << std::endl;
                 break;
             }
             else
@@ -200,12 +207,12 @@ void PhoneBook::printContact(int page)
 {
     page -= 1;
     {
-        std::cout << "\nContact information:\n\n"
-              << "First Name: " << contacts[page].getFirstName() << "\n"
-              << "Last Name: " << contacts[page].getLastName() << "\n"
-              << "Nickname: " << contacts[page].getNickName() << "\n"
-              << "Phone Number: " << contacts[page].getPhoneNumber() << "\n"
-              << "Darkest Secret: " << contacts[page].getDarkestSecret() << "\n";
+        std::cout << BOLD_TEXT << "\nContact information:\n\n" << RESET
+              << "First Name: " YELLOW << contacts[page].getFirstName() << RESET "\n"
+              << "Last Name: " YELLOW << contacts[page].getLastName() << RESET "\n"
+              << "Nickname: " YELLOW << contacts[page].getNickName() << RESET "\n"
+              << "Phone Number: " YELLOW << contacts[page].getPhoneNumber() << RESET "\n"
+              << "Darkest Secret: " YELLOW << contacts[page].getDarkestSecret() << RESET"\n";
     }
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cout << "\n\n\n\n" << std::endl;
@@ -220,7 +227,7 @@ void PhoneBook::printPhoneBook()
 
     for (int index = 0; index < 8; index++)
     {
-        std::cout << std::setw(5) << std::right << pageIndex++ << " | "
+        std::cout << std::setw(5) << std::right << YELLOW << pageIndex++ <<  RESET " | "
                   << std::setw(10) << std::right << truncateInput(contacts[index].getFirstName()) << " | "
                   << std::setw(10) << std::right << truncateInput(contacts[index].getLastName()) << " | " 
                   << std::setw(10) << std::right << truncateInput(contacts[index].getPhoneNumber()) << " | "

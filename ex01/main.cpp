@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/05/26 16:13:09 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/26 16:47:56 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void prompt()
 {
   std::cout << BOLD_TEXT;
 	std::cout << CYAN "Welcome to my Phonebook let's go 80's!!\n";
-	std::cout << CYAN "this high end piece of technology has an ADD, SEARCH, EXIT, and even a DELETE option!\n\n\n\n\n";
+	std::cout << CYAN "this high end piece of technology has an ADD, SEARCH, EXIT, and even a DELETE option!\n\n\n";
   std::cout << RESET;
 }
 
@@ -91,7 +91,7 @@ int main()
     std::cout << "            Enter ADD, SEARCH, DELETE or EXIT in capital letters: " << RESET;
     if (!safeGetLine(input))
       return 0;
-    std::cout << "\n                           you chose: [" BOLD_TEXT MAGENTA << input <<  RESET "]\n\n\n\n\n" << std::endl;
+    std::cout << "\n                           you chose: [" BOLD_TEXT MAGENTA << input <<  RESET "]\n\n\n" << std::endl;
     switch (getChoice(input)) 
     {
       case ADD: 

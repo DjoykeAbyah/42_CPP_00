@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 21:15:51 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/05/26 16:09:28 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/26 16:57:19 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void Contact::nameCheck(std::string& input, const std::string& prompt)
         if (!safeGetLine(input))
             break ;
         if (input.empty())
-            std::cout << "Field cannot be empty. Press Enter to try again" << std::endl;
+            std::cout << RED << "Field cannot be empty. Press Enter to try again" << RESET << std::endl;
         else if (!isAlphabetic(input))
-            std::cout << "Invalid input. Press Enter to try again" << std::endl;
+            std::cout << RED << "Invalid input. Press Enter to try again" << RESET << std::endl;
         else
             isValidInput = true;
     }
@@ -77,9 +77,9 @@ void Contact::phoneNumberCheck()
         if (!safeGetLine(_phoneNumber))
             break ;
         if (_phoneNumber.empty())
-            std::cout << "Field cannot be empty. Press Enter to try again" << std::endl;
+            std::cout << RED << "Field cannot be empty. Press Enter to try again" << RESET << std::endl;
         else if (!digitCheck(_phoneNumber))
-            std::cout << "Invalid input. Press Enter to try again" << std::endl;
+            std::cout<< RED << "Invalid input. Press Enter to try again" << RESET << std::endl;
         else
             isValidInput = true;
     }
@@ -95,6 +95,8 @@ void Contact::resetContact()
     _nickName.clear();
     _phoneNumber.clear();
     _darkestSecret.clear();
+
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 /**
@@ -143,7 +145,7 @@ void Contact::setDarkestSecret()
             break ;
 		std::cout << std::endl;
         if (_darkestSecret.empty())
-            std::cout << "Field cannot be empty. Press Enter to try again" << std::endl;
+            std::cout << RED << "Field cannot be empty. Press Enter to try again" << RESET << std::endl;
         else
             isValidInput = true;
     }
