@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/05/26 17:11:37 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/26 18:16:27 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ PhoneBook::PhoneBook():contactIndex(0){};
 PhoneBook::~PhoneBook(){};
 
 /**
- * checks if input is numeric
+ * @brief   checks if input is numeric
+ * @return  false is not digits and number is not
+ *          between 0 and 9 
 */
 bool PhoneBook::isNumeric(std::string& pageNum)
 {
@@ -39,23 +41,35 @@ bool PhoneBook::isNumeric(std::string& pageNum)
 }
 
 /**
- * check's if phoneBook is empty
+ * @brief   check's if phoneBook is empty
+ * @return  false if at least one contact is not empty
+ *          false if all contacts are empty
  */ 
 bool PhoneBook::isEmpty()
 {
     for (int i = 0; i < 8; ++i)
     {
         if (!contacts[i].getFirstName().empty())
-            return false; // At least one contact is not empty
+            return false;
     }
-    return true; // All contacts are empty
+    return true;
 }
 
+/**
+ * @brief   check's input index is a valid index
+ * @return  index is it's between 1 and 8
+ */ 
 bool PhoneBook::isValidPageIndex(int index)
 {
     return index >= 1 && index <= 8;
 }
 
+/**
+ * @brief   prints contact if not an empty entry
+ * @param   int index
+ * @return  false if entry is empty
+ *          true is entry exists
+ */ 
 bool PhoneBook::printContactIfNotEmpty(int index)
 {
     int arrayIndex = index - 1;
@@ -70,7 +84,9 @@ bool PhoneBook::printContactIfNotEmpty(int index)
 }
 
 /**
- * Searches a contact based on the index number of the phonebook
+ * @brief   searches a contact based on the index number of the phonebook
+ *          gives error message if user input is not index 1 till 8.
+ *          checks if contact is empty or not and shows prompt again if input is faulty
  */ 
 void PhoneBook::searchContact()
 {
@@ -87,7 +103,7 @@ void PhoneBook::searchContact()
     {
         std::cout << " Please choose a number between 1 - 8: ";
         std::cin >> pageNum;
-        std::cout <<"\n                           you chose: [" BOLD_TEXT CYAN << pageNum << RESET "]" << std::endl;
+        std::cout <<"\n\t\t\t\t\t\t\t\tyou chose: [" BOLD_TEXT CYAN << pageNum << RESET "]" << std::endl;
         if (isNumeric(pageNum))
         {
             int number = std::stoi(pageNum);
@@ -118,22 +134,24 @@ void PhoneBook::addContact()
     std::string answer;
     bool isValidInput = false;
     
-    if (contactIndex == 8)
+    std::cout << "contactindex is" << contactIndex << std::endl;
+    if (contactIndex == 8 || repeat == true)
     {
-        std::cout << BOLD_TEXT << "\n you're about to overwrite the first contact, are you sure?\n" << RESET <<std::endl;
+        std::cout << BOLD_TEXT << "\nyou're about to overwrite your oldest contact, are you sure?" << RESET <<std::endl;
         while (!isValidInput)
         {
             std::cout << "type yes or no in lowercase: \n";
             if (!safeGetLine(answer))
                 return ;
-            std::cout << "                           you chose: [" BOLD_TEXT << answer << RESET "]" << std::endl;
+            std::cout << "\n\t\t\t\t\t\t\t\tyou chose: [" BOLD_TEXT << answer << RESET "]" << std::endl;
             std::cout << std::endl;
             if (answer == "no")
                 return ;
             if (answer == "yes")
             {
                 isValidInput = true;
-                contactIndex = 0;    
+                contactIndex = 0;
+                repeat = true;   
             }
         }
     }
@@ -148,6 +166,7 @@ void PhoneBook::addContact()
 
 /**
  * deletes contact and contact info on specific index of the array
+ * @todo does this mess up the contactindex?
  */
 void PhoneBook::deleteContact()
 {
@@ -164,7 +183,7 @@ void PhoneBook::deleteContact()
     {
         std::cout << "Please give a number 1 - 8: ";
         std::cin >> pageNum;
-        std::cout << "                           you chose: [" BOLD_TEXT  CYAN<< pageNum << RESET "]" << std::endl;
+        std::cout << "\n\t\t\t\t\t\t\t\tyou chose: [" BOLD_TEXT  CYAN<< pageNum << RESET "]" << std::endl;
         if (isNumeric(pageNum))
         {
             int number = std::stoi(pageNum);
@@ -178,6 +197,7 @@ void PhoneBook::deleteContact()
                    continue; 
                 }
                 contacts[number].resetContact();
+                contactIndex--;
                 std::cout << GREEN "\nYou've successfully deleted entry nr." << pageNum << "\n\n\n" RESET << std::endl;
                 break;
             }
