@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/05/26 17:47:35 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/26 21:43:10 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,10 @@ int main()
   prompt();
   while (true) 
   {
-    std::cout << "\t\t\t\t\t\tEnter ADD, SEARCH, DELETE or EXIT in capital letters: " << RESET;
+    std::cout << "\t\t\t\t\t\tEnter ADD, SEARCH, DELETE or EXIT in capital letters: " << RESET;//put it in a define
     if (!safeGetLine(input))
       return 0;
-    std::cout << "\n\t\t\t\t\t\t\t\tyou chose: [" BOLD_TEXT MAGENTA << input <<  RESET "]\n\n\n" << std::endl;
+    std::cout << "\n\t\t\t\t\t\t\t\tyou chose: [" BOLD_TEXT MAGENTA << input <<  RESET "]\n\n\n" << std::endl;//put it in a define! 
     switch (getChoice(input)) 
     {
       case ADD: 

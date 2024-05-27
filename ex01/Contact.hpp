@@ -6,7 +6,7 @@
 /*   By: djoyke <djoyke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/13 23:13:19 by djoyke        #+#    #+#                 */
-/*   Updated: 2024/05/26 16:56:15 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/27 14:22:34 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 class Contact
 {
 	private:
-		std::string _firstName;//change this
+		std::string _firstName;
 		std::string _lastName;
 		std::string _nickName;
 		std::string _phoneNumber;
