@@ -43,3 +43,10 @@ sizeof(amounts) / sizeof(int): This division calculates how many elements of typ
 size_t const amounts_size(...): Declares a constant variable named amounts_size of type size_t (an unsigned integer type commonly used for sizes).
 
 So, the entire line is determining the number of elements in the array amounts and storing that count in the variable amounts_size. It's a common technique used to calculate the size of an array in terms of the number of elements, and it's often written as a safeguard against changes in the size of the array.
+
+
+➜  ex02 git:(main) ✗ ./DreamJob > hallo     
+➜  ex02 git:(main) ✗ diff hallo whatever.log
+
+//google declaring static fields in c++
+//non-member attributes
