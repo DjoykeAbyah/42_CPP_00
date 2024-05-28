@@ -33,6 +33,8 @@ public:
     static void numericOptions();
     static void isEmpty();
     static void introduceOptions();
+    static void tryAgain();
+    static void invalidInput();
     static void showPrompt();
 };
 

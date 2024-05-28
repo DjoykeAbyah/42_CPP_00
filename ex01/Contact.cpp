@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 21:15:51 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/05/28 20:43:07 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/28 21:24:34 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ Contact::Contact(){};
 Contact::~Contact(){};
 
 /**
- * firstname setter, uses nameCheck
+ * @brief   setter for FirstName
+ *          uses nameCheck method 
 */
 void Contact::setFirstName()
 {
@@ -27,7 +28,8 @@ void Contact::setFirstName()
 }
 
 /**
- * lastname setter, uses nameCheck
+ * @brief   setter for SetLastName
+ *          uses nameCheck method 
 */
 void Contact::setLastName()
 {
@@ -35,7 +37,8 @@ void Contact::setLastName()
 }
 
 /**
- * nickname setter, uses nameCheck
+ * @brief   setter for setNickName
+ *          uses nameCheck method 
 */
 void Contact::setNickName()
 {
@@ -43,7 +46,8 @@ void Contact::setNickName()
 }
 
 /**
- * phonenumber setter, uses phoneNumberCheck
+ * @brief   setter for PhoneNumber
+ *          uses PhoneNumberCheck method 
 */
 void Contact::setPhoneNumber()
 {
@@ -51,7 +55,8 @@ void Contact::setPhoneNumber()
 }
 
 /**
- * darkest secret setter
+ * @brief   setter for DarkestSecret
+ *          checks if field is not empty
 */
 void Contact::setDarkestSecret()
 {
@@ -62,16 +67,16 @@ void Contact::setDarkestSecret()
         std::cout << "Enter darkest secret: ";
         if (!safeGetLine(_darkestSecret))
             break ;
-		std::cout << std::endl;
         if (_darkestSecret.empty())
-            std::cout << UI::RED << "Field cannot be empty. Press Enter to try again" << UI::RESET << std::endl;
+            UI::tryAgain();
         else
             isValidInput = true;
     }
 }
 
 /**
- * gets firstname
+ * @brief   getter for FirstName
+ * @return  _firstName 
 */
 std::string Contact::getFirstName()
 {
@@ -79,7 +84,8 @@ std::string Contact::getFirstName()
 }
 
 /**
- * gets lastname
+ * @brief   getter for LasttName
+ * @return  _lastName 
 */
 std::string Contact::getLastName()
 {
@@ -87,7 +93,8 @@ std::string Contact::getLastName()
 }
 
 /**
- * gets nickname
+ * @brief   getter for NickName
+ * @return  _nickName 
 */
 std::string Contact::getNickName()
 {
@@ -95,7 +102,8 @@ std::string Contact::getNickName()
 }
 
 /**
- * gets phone number
+ * @brief   getter for PhoneNumber
+ * @return  _phoneNumber 
 */
 std::string Contact::getPhoneNumber()
 {
@@ -103,7 +111,8 @@ std::string Contact::getPhoneNumber()
 }
 
 /**
- * gets darkest secret
+ * @brief   getter for DarkestSecret
+ * @return  _darkestSecret 
 */
 std::string Contact::getDarkestSecret()
 {
@@ -111,7 +120,9 @@ std::string Contact::getDarkestSecret()
 }
 
 /**
- * checks if input is alphabetic
+ * @brief   checks if input string is alphabetic
+ * @return  true is alphabetic
+ *          false if not alphabetic 
 */
 bool Contact::isAlphabetic(const std::string str)
 {
@@ -124,7 +135,8 @@ bool Contact::isAlphabetic(const std::string str)
 }
 
 /**
- * checks if input is valid by checking if it's empty or alphabetic
+ * @brief   checks if input for name is valid by checking if it's empty or alphabetic
+ *          gives error message and if imput is empty or not alphabetic and reprompts user 
 */
 void Contact::nameCheck(std::string& input, const std::string& prompt)
 {
@@ -136,16 +148,18 @@ void Contact::nameCheck(std::string& input, const std::string& prompt)
         if (!safeGetLine(input))
             break ;
         if (input.empty())
-            std::cout << UI::RED << "Field cannot be empty. Press Enter to try again" << UI::RESET << std::endl;
+            UI::tryAgain();
         else if (!isAlphabetic(input))
-            std::cout << UI::RED << "Invalid input. Press Enter to try again" << UI::RESET << std::endl;
+            UI::invalidInput();
         else
             isValidInput = true;
     }
 }
 
 /**
- * checks if input is numeric
+ * @brief   checks if input is numeric
+ * @return  true if it's digit
+ *          false if not a digit 
 */
 bool Contact::digitCheck(std::string& input)
 {
@@ -170,9 +184,9 @@ void Contact::phoneNumberCheck()
         if (!safeGetLine(_phoneNumber))
             break ;
         if (_phoneNumber.empty())
-            std::cout << UI::RED << "Field cannot be empty. Press Enter to try again" << UI::RESET << std::endl;
+            UI::tryAgain();
         else if (!digitCheck(_phoneNumber))
-            std::cout<< UI::RED << "Invalid input. Press Enter to try again" << UI::RESET << std::endl;
+            UI::invalidInput();
         else
             isValidInput = true;
     }

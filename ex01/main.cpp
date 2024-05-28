@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/05/28 20:43:07 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/28 21:06:00 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ int main()
     UI::menuOptions();
     if (!safeGetLine(input))
       return 0;
-
-    // SHOW_CHOICE(input);
     UI::showChoice(input);
     UserChoice choice = getChoice(input);
     switch (choice) 

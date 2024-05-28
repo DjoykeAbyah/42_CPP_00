@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/05/28 20:47:24 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/28 21:20:14 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void PhoneBook::searchContact()
         std::cin >> pageNum;
         UI::showChoice(pageNum); 
         if (isNumeric(pageNum))
-        {
+        {UI::invalidInput();
             int number = std::stoi(pageNum);
             if (isValidPageIndex(number))
             {

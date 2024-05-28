@@ -47,6 +47,17 @@ void UI::introduceOptions()
     std::cout << RED << "\nPlease enter a number between 1 and 8.\n\n" << RESET;
 }
 
+void UI::tryAgain()
+{
+    std::cout << UI::RED << "Field cannot be empty. Try again" << UI::RESET << std::endl;
+
+}
+
+void UI::invalidInput()
+{
+    std::cout << UI::RED << "Invalid input. Try again" << UI::RESET << std::endl;
+}
+
 void UI::showPrompt() 
 {
     std::cout << BOLD_TEXT;
