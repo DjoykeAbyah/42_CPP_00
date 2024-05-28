@@ -6,7 +6,7 @@
 /*   By: djoyke <djoyke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/13 23:01:58 by djoyke        #+#    #+#                 */
-/*   Updated: 2024/05/26 18:13:56 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/28 20:45:36 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@
 # include <iomanip> 
 # include "Contact.hpp"
 
-#define BOLD_TEXT "\033[1m"
-#define RESET "\033[0m"
+enum UserChoice
+{
+    ADD,
+    SEARCH,
+    DELETE,
+    EXIT,
+    INVALID
+};
 
-#define RED "\033[31m"
-#define GREEN "\033[32m"
-#define YELLOW "\033[33m"
-#define BLUE "\033[34m"
-#define MAGENTA "\033[35m"
-#define CYAN "\033[36m"
-#define WHITE "\033[37m"
+UserChoice getChoice(const std::string& input);
 
 /**
  * PhoneBook class represents a simple phone book with a limited number of contacts.
@@ -42,6 +42,13 @@ class PhoneBook
 		int contactIndex;
 		bool repeat = false;
 
+		std::string truncateInput(const std::string& input);
+		bool isNumeric(std::string& pageNum);
+		bool isEmpty();
+		bool isValidPageIndex(int index);
+		bool printContactIfNotEmpty(int index);
+		void printPhoneBook();
+		
 	public:
 		/**
 		 * Constructor for the PhoneBook class.
@@ -53,17 +60,12 @@ class PhoneBook
 		 */
 		~PhoneBook();
 
+	int getContactIndex() const;
 	void searchContact();
 	void addContact();
-	int getContactIndex() const;
 	void deleteContact();
 	void printContact(int page);
-	void printPhoneBook();
-	std::string truncateInput(const std::string& input);
-	bool isNumeric(std::string& pageNum);
-	bool isEmpty();
-	bool isValidPageIndex(int index);
-	bool printContactIfNotEmpty(int index);
+
 };
 
 #endif

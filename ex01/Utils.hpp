@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/31 15:38:38 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/01/31 15:42:32 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/28 20:46:32 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,4 @@
 
 bool safeGetLine(std::string& input);
 
-#endif // UTILITY_FUNCTIONS_HPP
+#endif

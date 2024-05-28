@@ -6,16 +6,41 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/05/26 21:43:33 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/28 20:47:24 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Utils.hpp"
+#include "UI.hpp"
 
 PhoneBook::PhoneBook():contactIndex(0){};
 
 PhoneBook::~PhoneBook(){};
+
+/**
+ * Contact Index getter
+ */
+int PhoneBook::getContactIndex() const
+{
+    return contactIndex;
+}
+
+/**
+ * links enum to input
+ */
+UserChoice getChoice(const std::string& input) 
+{
+    if (input == "ADD") 
+		return ADD;
+    if (input == "SEARCH") 
+		return SEARCH;
+    if (input == "DELETE") 
+		return DELETE;
+    if (input == "EXIT") 
+		return EXIT;
+    return INVALID;
+}
 
 /**
  * @brief   checks if input is numeric
@@ -76,7 +101,7 @@ bool PhoneBook::printContactIfNotEmpty(int index)
 
     if (contacts[arrayIndex].getFirstName().empty())
     {
-        std::cout << RED << "\nEntry is empty\n\n" << RESET << std::endl;
+        std::cout << UI::RED << "\nEntry is empty\n\n" << UI::RESET << std::endl;
         return false;
     }
     printContact(index);
@@ -95,15 +120,15 @@ void PhoneBook::searchContact()
     printPhoneBook();
     if (isEmpty())
     {
-        std::cout << BLUE "\nPhoneBook is empty\n\n\n" << RESET << std::endl;
+        UI::isEmpty();
         return ;
     }
     std::cout << "\nWhich page do you want to see?";
     while (true)
     {
-        std::cout << " Please choose a number between 1 - 8: ";
+        UI::numericOptions();
         std::cin >> pageNum;
-        std::cout <<"\n\t\t\t\t\t\t\t\tyou chose: [" BOLD_TEXT CYAN << pageNum << RESET "]" << std::endl;
+        UI::showChoice(pageNum); 
         if (isNumeric(pageNum))
         {
             int number = std::stoi(pageNum);
@@ -113,17 +138,9 @@ void PhoneBook::searchContact()
                     break ;
             }
             else
-                std::cout << RED "\nPlease enter a number between 1 and 8.\n\n" RESET << std::endl;
+                UI::introduceOptions();
         }
     }
-}
-
-/**
- * Contact Index getter
- */
-int PhoneBook::getContactIndex() const
-{
-    return contactIndex;
 }
 
 /**
@@ -134,16 +151,15 @@ void PhoneBook::addContact()
     std::string answer;
     bool isValidInput = false;
     
-    std::cout << "contactindex is" << contactIndex << std::endl;
     if (contactIndex == 8 || repeat == true)
     {
-        std::cout << BOLD_TEXT << "\nyou're about to overwrite your oldest contact, are you sure?" << RESET <<std::endl;
+        std::cout << UI::BOLD_TEXT << "\nyou're about to overwrite your oldest contact, are you sure?" << UI::RESET <<std::endl;
         while (!isValidInput)
         {
-            std::cout << "type yes or no in lowercase: \n";
+            std::cout << "type yes or no in lowercase: ";
             if (!safeGetLine(answer))
                 return ;
-            std::cout << "\n\t\t\t\t\t\t\t\tyou chose: [" BOLD_TEXT << answer << RESET "]" << std::endl;//define
+            UI::showChoice(answer);
             std::cout << std::endl;
             if (answer == "no")
                 return ;
@@ -161,7 +177,7 @@ void PhoneBook::addContact()
     contacts[contactIndex].setPhoneNumber();
     contacts[contactIndex].setDarkestSecret();
     contactIndex++;
-    std::cout << GREEN "you've successfully added a new contact!\n\n\n" << RESET <<std::endl;
+    std::cout << UI::GREEN << "you've successfully added a new contact!\n\n\n" << UI::RESET <<std::endl;
 }
 
 /**
@@ -175,15 +191,15 @@ void PhoneBook::deleteContact()
     printPhoneBook();
     if (isEmpty())
     {
-        std::cout << BLUE "\nPhoneBook is empty\n\n\n" << RESET << std::endl;
+        UI::isEmpty();
         return ;
     }
     std::cout << "\nWhich contact do you want to delete? ";
     while (true)
     {
-        std::cout << "Please give a number 1 - 8: ";
+        UI::numericOptions();
         std::cin >> pageNum;
-        std::cout << "\n\t\t\t\t\t\t\t\tyou chose: [" BOLD_TEXT  CYAN<< pageNum << RESET "]" << std::endl;
+        UI::showChoice(pageNum);
         if (isNumeric(pageNum))
         {
             int number = std::stoi(pageNum);
@@ -192,17 +208,17 @@ void PhoneBook::deleteContact()
                 number -= 1;
                 if (contacts[number].getFirstName().empty())
                 {
-                   std::cout << RED "\nthis entry does not exist\n\n\n" << RESET << std::endl;
+                   std::cout << UI::RED << "\nthis entry does not exist\n\n\n" << UI::RESET << std::endl;
                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                    continue; 
                 }
                 contacts[number].resetContact();
                 contactIndex--;
-                std::cout << GREEN "\nYou've successfully deleted entry nr." << pageNum << "\n\n\n" RESET << std::endl;//define
+                std::cout << UI::GREEN << "\nYou've successfully deleted entry nr." << pageNum << "\n\n\n" << UI::RESET << std::endl;
                 break;
             }
             else
-                std::cout << RED "\nPlease enter a number between 1 and 8.\n\n" RESET << std::endl;
+                UI::introduceOptions();
         }
     }
 }
@@ -227,15 +243,15 @@ void PhoneBook::printContact(int page)
 {
     page -= 1;
     {
-        std::cout << BOLD_TEXT << "\nContact information:\n\n" << RESET
-              << "First Name: " YELLOW << contacts[page].getFirstName() << RESET "\n"
-              << "Last Name: " YELLOW << contacts[page].getLastName() << RESET "\n"
-              << "Nickname: " YELLOW << contacts[page].getNickName() << RESET "\n"
-              << "Phone Number: " YELLOW << contacts[page].getPhoneNumber() << RESET "\n"
-              << "Darkest Secret: " YELLOW << contacts[page].getDarkestSecret() << RESET"\n";
+        std::cout << UI::BOLD_TEXT << "\nContact information:\n\n" << UI::RESET
+              << "First Name: " << UI::YELLOW << contacts[page].getFirstName() << UI::RESET << "\n"
+              << "Last Name: " << UI::YELLOW << contacts[page].getLastName() << UI::RESET << "\n"
+              << "Nickname: " << UI::YELLOW << contacts[page].getNickName() << UI::RESET << "\n"
+              << "Phone Number: " << UI::YELLOW << contacts[page].getPhoneNumber() << UI::RESET << "\n"
+              << "Darkest Secret: " << UI::YELLOW << contacts[page].getDarkestSecret() << UI::RESET << "\n";
     }
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    std::cout << "\n\n\n\n" << std::endl;
+    std::cout << "\n\n\n" << std::endl;
 }
 
 /**
@@ -247,7 +263,7 @@ void PhoneBook::printPhoneBook()
 
     for (int index = 0; index < 8; index++)
     {
-        std::cout << std::setw(5) << std::right << YELLOW << pageIndex++ <<  RESET " | "
+        std::cout << std::setw(5) << std::right << UI::YELLOW << pageIndex++ << UI::RESET << " | "
                   << std::setw(10) << std::right << truncateInput(contacts[index].getFirstName()) << " | "
                   << std::setw(10) << std::right << truncateInput(contacts[index].getLastName()) << " | " 
                   << std::setw(10) << std::right << truncateInput(contacts[index].getPhoneNumber()) << " | "
