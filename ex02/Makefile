@@ -6,7 +6,7 @@
 #    By: djoyke <djoyke@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/01/13 22:49:01 by djoyke        #+#    #+#                  #
-#    Updated: 2024/05/27 14:39:45 by dreijans      ########   odam.nl          #
+#    Updated: 2024/05/28 16:20:24 by dreijans      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ clean:
 
 fclean: clean
 	@ rm -f $(NAME)
-	@ echo "${YELLOW}cleaning done!${DONE}"
+	@ echo "${YELLOW}this job is awfull I quit!${DONE}"
 
 re:	fclean all
 

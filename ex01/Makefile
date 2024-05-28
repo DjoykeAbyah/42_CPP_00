@@ -6,7 +6,7 @@
 #    By: djoyke <djoyke@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/01/13 22:49:01 by djoyke        #+#    #+#                  #
-#    Updated: 2024/01/31 15:43:03 by dreijans      ########   odam.nl          #
+#    Updated: 2024/05/28 16:19:43 by dreijans      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ clean:
 
 fclean: clean
 	@ rm -f $(NAME)
-	@ echo "${YELLOW}cleaning done!${DONE}"
+	@ echo "${YELLOW}Phonebook thrown in the trash!${DONE}"
 
 re:	fclean all
 
