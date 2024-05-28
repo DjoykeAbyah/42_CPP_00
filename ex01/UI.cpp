@@ -58,6 +58,22 @@ void UI::invalidInput()
     std::cout << UI::RED << "Invalid input. Try again" << UI::RESET << std::endl;
 }
 
+void UI::deletionSuccess(const std::string& input)
+{
+    std::cout << UI::GREEN << "\nYou've successfully deleted entry nr." << input << "\n\n\n" << UI::RESET << std::endl;
+
+}
+
+void UI::additionSuccess()
+{
+    std::cout << UI::GREEN << "you've successfully added a new contact!\n\n\n" << UI::RESET <<std::endl;
+}
+
+void UI::overwriteWarning()
+{
+    std::cout << UI::BOLD_TEXT << "\nyou're about to overwrite your oldest contact, are you sure?" << UI::RESET <<std::endl;
+}
+
 void UI::showPrompt() 
 {
     std::cout << BOLD_TEXT;

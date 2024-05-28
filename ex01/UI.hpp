@@ -35,6 +35,9 @@ public:
     static void introduceOptions();
     static void tryAgain();
     static void invalidInput();
+    static void deletionSuccess(const std::string& input);
+    static void additionSuccess();
+    static void overwriteWarning();
     static void showPrompt();
 };
 

@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/05/28 21:06:00 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/28 21:31:29 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 #include <cstring>
 
 /**
- * protects getline
- */
+ * @brief   protects getline if EOF is encountered or another error occurs
+ * @return  true if no EOF or other error encountered
+ *          false if EOF or other error encountered
+*/
 bool safeGetLine(std::string& input) 
 {
     if (!std::getline(std::cin, input, '\n'))
@@ -39,9 +41,7 @@ bool safeGetLine(std::string& input)
     return true;
 }
 
-/**
- * main method
- */
+
 int main() 
 {
 	PhoneBook phoneBook;

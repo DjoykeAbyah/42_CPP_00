@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/05/28 21:20:14 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/28 21:48:35 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,18 @@ PhoneBook::PhoneBook():contactIndex(0){};
 PhoneBook::~PhoneBook(){};
 
 /**
- * Contact Index getter
- */
+ * @brief   contact index getter
+*/
 int PhoneBook::getContactIndex() const
 {
     return contactIndex;
 }
 
 /**
- * links enum to input
- */
+ * @brief   checks input for corresponding enums
+ * @return  enum linked to input, if no link to enum found
+ *          returns INVALID
+*/
 UserChoice getChoice(const std::string& input) 
 {
     if (input == "ADD") 
@@ -130,7 +132,7 @@ void PhoneBook::searchContact()
         std::cin >> pageNum;
         UI::showChoice(pageNum); 
         if (isNumeric(pageNum))
-        {UI::invalidInput();
+        {
             int number = std::stoi(pageNum);
             if (isValidPageIndex(number))
             {
@@ -144,8 +146,10 @@ void PhoneBook::searchContact()
 }
 
 /**
- * adds contact and contact info to the array
- */
+ * @brief   adds contact to phonebook
+ *          if phonebook alrady has 8 contacts gives overwriting warning
+ *          if user's choice is to overwrite. oldest contact is replaced by new contact
+*/
 void PhoneBook::addContact()
 {
     std::string answer;
@@ -153,7 +157,7 @@ void PhoneBook::addContact()
     
     if (contactIndex == 8 || repeat == true)
     {
-        std::cout << UI::BOLD_TEXT << "\nyou're about to overwrite your oldest contact, are you sure?" << UI::RESET <<std::endl;
+        UI::overwriteWarning();
         while (!isValidInput)
         {
             std::cout << "type yes or no in lowercase: ";
@@ -177,12 +181,12 @@ void PhoneBook::addContact()
     contacts[contactIndex].setPhoneNumber();
     contacts[contactIndex].setDarkestSecret();
     contactIndex++;
-    std::cout << UI::GREEN << "you've successfully added a new contact!\n\n\n" << UI::RESET <<std::endl;
+    UI::additionSuccess();
 }
 
 /**
- * deletes contact and contact info on specific index of the array
- * @todo does this mess up the contactindex?
+ * @brief   deletes contact and contact info on specific index of the array
+ *          gives warning message if index does not have an entry and reprompts the user      
  */
 void PhoneBook::deleteContact()
 {
@@ -214,7 +218,7 @@ void PhoneBook::deleteContact()
                 }
                 contacts[number].resetContact();
                 contactIndex--;
-                std::cout << UI::GREEN << "\nYou've successfully deleted entry nr." << pageNum << "\n\n\n" << UI::RESET << std::endl;
+                UI::deletionSuccess(pageNum);
                 break;
             }
             else
@@ -224,8 +228,8 @@ void PhoneBook::deleteContact()
 }
 
 /**
- * Truncates the text if it's longer than 10 characters 
- * and replace the last displayable character with a dot
+ * @brief   truncates the text if it's longer than 10 characters 
+ *          and replaces the last displayable character with a dot
 */
 std::string PhoneBook::truncateInput(const std::string& input)
 {
@@ -237,8 +241,8 @@ std::string PhoneBook::truncateInput(const std::string& input)
 }
 
 /**
- * displays one contact
- */ 
+ * @brief   displays contactinfo of one contact
+*/
 void PhoneBook::printContact(int page)
 {
     page -= 1;
@@ -255,8 +259,8 @@ void PhoneBook::printContact(int page)
 }
 
 /**
- * displays all entered contacts and truncates entries longer than with 10
- */ 
+ * @brief   displays all contacts truncated if contact fields > 10
+*/
 void PhoneBook::printPhoneBook()
 {
     int pageIndex = 1; // Starting page index

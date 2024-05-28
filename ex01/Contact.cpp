@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 21:15:51 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/05/28 21:24:34 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/28 21:29:52 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,22 +157,8 @@ void Contact::nameCheck(std::string& input, const std::string& prompt)
 }
 
 /**
- * @brief   checks if input is numeric
- * @return  true if it's digit
- *          false if not a digit 
-*/
-bool Contact::digitCheck(std::string& input)
-{
-	for (int i = 0; i < input.size(); i++)
-	{
-		if (!std::isdigit(input[i]))
-			return false;
-	}
-	return true;
-}
-
-/**
- * checks if input is alphabetic
+ * @brief   checks if input for phone number is valid by checking if it's empty or numeric
+ *          gives error message and if imput is empty or not numeric and reprompts user  
 */
 void Contact::phoneNumberCheck()
 {
@@ -193,7 +179,22 @@ void Contact::phoneNumberCheck()
 }
 
 /**
- * resets field to empty
+ * @brief   checks if input is numeric
+ * @return  true if it's digit
+ *          false if not a digit 
+*/
+bool Contact::digitCheck(std::string& input)
+{
+	for (int i = 0; i < input.size(); i++)
+	{
+		if (!std::isdigit(input[i]))
+			return false;
+	}
+	return true;
+}
+
+/**
+ * @brief   resets contact by clearing all the fields 
 */
 void Contact::resetContact() 
 {
