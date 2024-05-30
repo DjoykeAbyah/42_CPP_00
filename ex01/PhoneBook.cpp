@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/05/30 17:49:38 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/30 18:16:52 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ UserChoice getChoice(const std::string& input)
 		return ADD;
     if (input == "SEARCH") 
 		return SEARCH;
-    if (input == "DELETE") 
-		return DELETE;
     if (input == "EXIT") 
 		return EXIT;
     return INVALID;
@@ -168,7 +166,8 @@ void PhoneBook::addContact()
             if (answer == "yes")
             {
                 isValidInput = true;
-                contactIndex = 0;
+                if (contactIndex == 8)
+                    contactIndex = 0;
                 repeat = true;   
             }
         }
@@ -182,48 +181,6 @@ void PhoneBook::addContact()
     UI::additionSuccess();
 }
 
-/**
- * @brief   deletes contact and contact info on specific index of the array
- *          gives warning message if index does not have an entry and reprompts the user      
- */
-void PhoneBook::deleteContact()
-{
-    std::string pageNum;
-    
-    printPhoneBook();
-    if (isEmpty())
-    {
-        UI::isEmpty();
-        return ;
-    }
-    std::cout << "\nWhich contact do you want to delete? ";
-    while (true)
-    {
-        UI::numericOptions();
-        std::cin >> pageNum;
-        UI::showChoice(pageNum);
-        if (isNumeric(pageNum))
-        {
-            int number = std::stoi(pageNum);
-            if (number >= 1 && number <= 8)
-            {
-                number -= 1;
-                if (contacts[number].getFirstName().empty())
-                {
-                   std::cout << UI::RED << "\nthis entry does not exist\n\n\n" << UI::RESET << std::endl;
-                   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                   continue; 
-                }
-                contacts[number].resetContact();
-                contactIndex--;
-                UI::deletionSuccess(pageNum);
-                break;
-            }
-            else
-                UI::introduceOptions();
-        }
-    }
-}
 
 /**
  * @brief   truncates the text if it's longer than 10 characters 

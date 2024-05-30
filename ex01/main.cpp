@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 14:05:06 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/05/28 21:31:29 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/30 18:16:43 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,45 +44,40 @@ bool safeGetLine(std::string& input)
 
 int main() 
 {
-	PhoneBook phoneBook;
-  std::string input;
-    
- UI::showPrompt();
-  while (true) 
-  {
-    UI::menuOptions();
-    if (!safeGetLine(input))
-      return 0;
-    UI::showChoice(input);
-    UserChoice choice = getChoice(input);
-    switch (choice) 
+    PhoneBook phoneBook;
+    std::string input;
+        
+    UI::showPrompt();
+    while (true) 
     {
-      case ADD: 
-      {
-          phoneBook.addContact();
-          break;
-      }
-      case SEARCH: 
-      {
-          phoneBook.searchContact();
-          break;
-      }
-      case DELETE: 
-      {
-          phoneBook.deleteContact();
-          break;
-      }
-      case EXIT: 
-      {
-          std::cout << UI::BOLD_TEXT << "bye now!\n" << UI::RESET << std::endl;
-          return 0;
-      }
-      case INVALID:
-      {
-          std::cout << UI::RED << "Option doesn't exist\n" << UI::RESET << std::endl;
-          break;
-      }
+        UI::menuOptions();
+        if (!safeGetLine(input))
+            return 0;
+        UI::showChoice(input);
+        UserChoice choice = getChoice(input);
+        switch (choice) 
+        {
+            case ADD: 
+            {
+                phoneBook.addContact();
+                break;
+            }
+            case SEARCH: 
+            {
+                phoneBook.searchContact();
+                break;
+            }
+            case EXIT: 
+            {
+                std::cout << UI::BOLD_TEXT << "bye now!\n" << UI::RESET << std::endl;
+                return 0;
+            }
+            case INVALID:
+            {
+                std::cout << UI::RED << "Option doesn't exist\n" << UI::RESET << std::endl;
+                break;
+            }
+        }
     }
-  }
-  return 0;
+    return 0;
 }

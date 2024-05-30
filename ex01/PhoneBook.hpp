@@ -6,7 +6,7 @@
 /*   By: djoyke <djoyke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/13 23:01:58 by djoyke        #+#    #+#                 */
-/*   Updated: 2024/05/28 20:45:36 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/30 18:16:57 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ enum UserChoice
 {
     ADD,
     SEARCH,
-    DELETE,
     EXIT,
     INVALID
 };
@@ -63,7 +62,6 @@ class PhoneBook
 	int getContactIndex() const;
 	void searchContact();
 	void addContact();
-	void deleteContact();
 	void printContact(int page);
 
 };

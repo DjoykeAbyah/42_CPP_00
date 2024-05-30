@@ -27,7 +27,7 @@ const char* const UI::YELLOW = "\033[33m";
 */
 void UI::menuOptions() 
 {
-    std::cout << "\t\t\t\t\t\tEnter ADD, SEARCH, DELETE or EXIT in capital letters: " << RESET;
+    std::cout << "\t\t\t\t\t\tEnter ADD, SEARCH, or EXIT in capital letters: " << RESET;
 }
 
 /**
@@ -80,15 +80,6 @@ void UI::invalidInput()
 }
 
 /**
- * @brief   informs user of succesful contact deletion
-*/
-void UI::deletionSuccess(const std::string& input)
-{
-    std::cout << UI::GREEN << "\nYou've successfully deleted entry nr." << input << "\n\n\n" << UI::RESET << std::endl;
-
-}
-
-/**
  * @brief   informs user of succesful contact addition
 */
 void UI::additionSuccess()
@@ -111,6 +102,6 @@ void UI::showPrompt()
 {
     std::cout << BOLD_TEXT;
     std::cout << CYAN << "Welcome to my Phonebook let's go 80's!!\n";
-    std::cout << CYAN << "This high-end piece of technology has an ADD, SEARCH, EXIT, and even a DELETE option!\n\n";
+    std::cout << CYAN << "This high-end piece of technology has an ADD, SEARCH and an EXIT option!\n\n";
     std::cout << RESET;
 }
