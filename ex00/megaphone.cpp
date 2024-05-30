@@ -6,7 +6,7 @@
 /*   By: djoyke <djoyke@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/13 18:38:39 by djoyke        #+#    #+#                 */
-/*   Updated: 2024/01/13 22:55:37 by djoyke        ########   odam.nl         */
+/*   Updated: 2024/05/30 17:48:03 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
  * @param argv argument strings
  * @brief main method transforms lowercase arguments to uppercasse
  * if no args presented besides executor displays Loud and unbearable noice
- * @todo do I need to return error if numeric characters?
  */
 int main(int argc, char **argv)
 {   

@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/17 21:15:51 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/05/28 21:29:52 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/30 17:49:26 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,46 +74,29 @@ void Contact::setDarkestSecret()
     }
 }
 
-/**
- * @brief   getter for FirstName
- * @return  _firstName 
-*/
 std::string Contact::getFirstName()
 {
 	return _firstName;
 }
 
-/**
- * @brief   getter for LasttName
- * @return  _lastName 
-*/
 std::string Contact::getLastName()
 {
 	return _lastName;
 }
 
-/**
- * @brief   getter for NickName
- * @return  _nickName 
-*/
 std::string Contact::getNickName()
 {
 	return _nickName;
 }
-
 /**
- * @brief   getter for PhoneNumber
- * @return  _phoneNumber 
+ * @brief   getter for DarkestSecret
+ * @return  _darkestSecret 
 */
 std::string Contact::getPhoneNumber()
 {
 	return _phoneNumber;
 }
 
-/**
- * @brief   getter for DarkestSecret
- * @return  _darkestSecret 
-*/
 std::string Contact::getDarkestSecret()
 {
 	return _darkestSecret;

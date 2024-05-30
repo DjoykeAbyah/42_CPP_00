@@ -6,7 +6,7 @@
 /*   By: dreijans <dreijans@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/01/12 21:01:05 by dreijans      #+#    #+#                 */
-/*   Updated: 2024/05/28 21:48:35 by dreijans      ########   odam.nl         */
+/*   Updated: 2024/05/30 17:49:38 by dreijans      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ PhoneBook::PhoneBook():contactIndex(0){};
 
 PhoneBook::~PhoneBook(){};
 
-/**
- * @brief   contact index getter
-*/
+
 int PhoneBook::getContactIndex() const
 {
     return contactIndex;
